@@ -1,9 +1,11 @@
 package edu.northeastern.cs5520group7;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +25,8 @@ public class RetrofitActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private Button retrofitBtn;
     private IPlaceholder api;
+    private TextView textComments;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class RetrofitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_retrofit);
 
         retrofitBtn = findViewById(R.id.button4);
+        textComments = findViewById(R.id.textView);
         retrofitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,8 +92,13 @@ public class RetrofitActivity extends AppCompatActivity {
                             .append("\n");
 
 
-                    Log.d(TAG, str.toString());
-
+//                    Log.d(TAG, str.toString());
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textComments.setText(comment.getText());
+//                        }
+//                    });
 
                 }
             }
