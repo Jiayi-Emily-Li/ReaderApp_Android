@@ -5,22 +5,22 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('/Users/jiayili/Documents/keystoredemo/classkeystore')
-            storePassword '1998l02j23y'
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+            storePassword '13790706'
             keyAlias 'key0'
-            keyPassword '1998l02j23y'
+            keyPassword '13790706'
         }
         config {
-            storePassword '1998l02j23y'
+            storePassword '13790706'
             keyAlias 'key0'
-            keyPassword '1998l02j23y'
-            storeFile file('/Users/jiayili/Documents/keystoredemo/classkeystore')
+            keyPassword '13790706'
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
         }
         release {
-            storeFile file('/Users/jiayili/Documents/keystoredemo/classkeystore')
-            storePassword '1998l02j23y'
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+            storePassword '13790706'
             keyAlias 'key0'
-            keyPassword '1998l02j23y'
+            keyPassword '13790706'
         }
     }
     compileSdk 32

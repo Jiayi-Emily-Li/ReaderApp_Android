@@ -92,13 +92,13 @@ public class RetrofitActivity extends AppCompatActivity {
                             .append("\n");
 
 
-//                    Log.d(TAG, str.toString());
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textComments.setText(comment.getText());
-//                        }
-//                    });
+                    Log.d(TAG, str.toString());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            textComments.setText(comment.getText());
+                        }
+                    });
 
                 }
             }
