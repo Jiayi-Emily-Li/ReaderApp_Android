@@ -33,6 +33,7 @@ public class UserList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
+        //connected to firebase
         database = FirebaseDatabase.getInstance();
         mRef=database.getReference("Users");
 
@@ -44,6 +45,7 @@ public class UserList extends AppCompatActivity {
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //change to User class? Added later
                 String name = snapshot.getValue(String.class);
                 users_Name.add(name);
                 arrAdapter.notifyDataSetChanged();
