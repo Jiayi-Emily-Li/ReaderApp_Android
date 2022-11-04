@@ -1,13 +1,15 @@
 package edu.northeastern.cs5520group7;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String SERVER_KEY = "key=AAAAZOyBdhI:APA91bFs6BMDiNyffh588kESWGKO1pvanPCSBt3dQPrsMSuXFv9QKDAvehzsSTGDqrppWJ5uWzMUZg0tMQLcx0wnzCdyeWSxtl1m2bwpW76Y9TGFOvV0brjkzFX2Ji4m9nQqVAnatETE";
+
 
     private Button stickButton;
 
