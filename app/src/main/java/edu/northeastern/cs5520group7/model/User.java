@@ -1,7 +1,5 @@
 package edu.northeastern.cs5520group7.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 public class User {
@@ -10,8 +8,6 @@ public class User {
     private String token;
     private ArrayList<History> histories;
 
-    public User() {
-    }
 
     public User(String userId, String name, String token) {
         this.userId = userId;

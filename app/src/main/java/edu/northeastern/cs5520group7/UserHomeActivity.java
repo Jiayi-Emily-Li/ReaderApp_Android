@@ -1,15 +1,16 @@
 package edu.northeastern.cs5520group7;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class UserHomeActivity extends AppCompatActivity {
 
-    Button showHistoryButton;
+    private Button showHistoryButton;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class UserHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_home);
 
         showHistoryButton = (Button) findViewById(R.id.showHistoryButton);
+        name = getIntent().getStringExtra("name");
         showHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
