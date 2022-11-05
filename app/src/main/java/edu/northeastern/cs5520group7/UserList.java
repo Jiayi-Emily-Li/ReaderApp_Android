@@ -77,7 +77,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
     @Override
     public void itemClicked(User user) {
-        Toast.makeText(this,"clicked: " + user.getName().toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"clicked: " + user.getName(),Toast.LENGTH_SHORT).show();
 
     }
 }
