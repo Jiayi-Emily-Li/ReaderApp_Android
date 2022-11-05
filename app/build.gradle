@@ -4,26 +4,51 @@ plugins {
 }
 
 android {
+//    signingConfigs {
+//        debug {
+//            storeFile file('/Users/jiayili/Documents/JLKeystore')
+//            storePassword '980223'
+//            keyAlias 'my first key'
+//            keyPassword '980223'
+//
+//        }
+//        JL {
+//            storePassword '980223'
+//            keyAlias 'my first key'
+//            keyPassword '980223'
+//            storeFile file('/Users/jiayili/Documents/JLKeystore')
+//        }
+//        release {
+//            storePassword '980223'
+//            keyAlias 'my first key'
+//            keyPassword '980223'
+//            storeFile file('/Users/jiayili/Documents/JLKeystore')
+//        }
+//    }
+
     signingConfigs {
-       /* debug {
-            storeFile file('/Users/jiayili/Documents/JLKeystore')
-            storePassword '980223'
-            keyAlias 'my first key'
-            keyPassword '980223'
+        debug {
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+            storePassword '13790706'
+            keyAlias 'key0'
+            keyPassword '13790706'
         }
         JL {
-            storePassword '980223'
-            keyAlias 'my first key'
-            keyPassword '980223'
-            storeFile file('/Users/jiayili/Documents/JLKeystore')
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+            storePassword '13790706'
+            keyAlias 'key0'
+            keyPassword '13790706'
         }
-        release {
-            storePassword '980223'
-            keyAlias 'my first key'
-            keyPassword '980223'
-            storeFile file('/Users/jiayili/Documents/JLKeystore')
-        }*/
+
+        config {
+            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+            storePassword '13790706'
+            keyAlias 'key0'
+            keyPassword '13790706'
+        }
     }
+
+
     compileSdk 32
 
     defaultConfig {
@@ -36,13 +61,13 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-   /* buildTypes {
+    buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.config
         }
-    }*/
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

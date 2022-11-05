@@ -11,6 +11,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
     private Button showHistoryButton;
     private String name;
+    private Button sendStickerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,15 @@ public class UserHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserHomeActivity.this, HistoryActivity.class);
+                UserHomeActivity.this.startActivity(intent);
+            }
+        });
+
+        sendStickerButton = (Button) findViewById(R.id.sendStickerButton);
+        sendStickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserHomeActivity.this, UserList.class);
                 UserHomeActivity.this.startActivity(intent);
             }
         });
