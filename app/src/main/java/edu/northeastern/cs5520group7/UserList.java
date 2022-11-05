@@ -1,14 +1,13 @@
 package edu.northeastern.cs5520group7;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +33,8 @@ public class UserList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users");
+
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("users").child("user1");
 
 
         //connected element of arrayList to the RecycleView
@@ -48,15 +47,17 @@ public class UserList extends AppCompatActivity {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userList.clear();
-                for(DataSnapshot Snapshot : snapshot.getChildren()){
-                    User user = snapshot.getValue(User.class);
+                //userList.clear();
+                //for(DataSnapshot Snapshot : snapshot.getChildren()){
+                    //User user = Snapshot.getValue(User.class);
+                    //FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    //assert user != null;
 
-                    assert user != null && firebaseUser != null;
-                    if(!user.getUserId().equals(firebaseUser.getUid())){
-                        userList.add(user);
-                    }
-                }
+                    //userList.add(user);
+                    User value = snapshot.getValue(User.class);
+                    Log.d("message FOR USER", value.toString());
+
+                //}
                 userAdapter = new UserAdapter(UserList.this, userList);
 
             }

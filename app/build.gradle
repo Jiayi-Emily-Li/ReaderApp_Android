@@ -4,49 +4,49 @@ plugins {
 }
 
 android {
-//    signingConfigs {
-//        debug {
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//
-//        }
-//        JL {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//        release {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//    }
-
     signingConfigs {
         debug {
-            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
-            storePassword '13790706'
-            keyAlias 'key0'
-            keyPassword '13790706'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+
         }
         JL {
-            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
-            storePassword '13790706'
-            keyAlias 'key0'
-            keyPassword '13790706'
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
         }
-
-        config {
-            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
-            storePassword '13790706'
-            keyAlias 'key0'
-            keyPassword '13790706'
+        release {
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
         }
     }
+
+//    signingConfigs {
+//        debug {
+//            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+//            storePassword '13790706'
+//            keyAlias 'key0'
+//            keyPassword '13790706'
+//        }
+//        JL {
+//            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+//            storePassword '13790706'
+//            keyAlias 'key0'
+//            keyPassword '13790706'
+//        }
+//
+//        config {
+//            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
+//            storePassword '13790706'
+//            keyAlias 'key0'
+//            keyPassword '13790706'
+//        }
+//    }
 
 
     compileSdk 32
@@ -65,7 +65,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
