@@ -1,6 +1,7 @@
 package edu.northeastern.cs5520group7;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +19,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.northeastern.cs5520group7.Adapter.SelectListener;
 import edu.northeastern.cs5520group7.Adapter.UserAdapter;
 import edu.northeastern.cs5520group7.model.User;
 
-public class UserList extends AppCompatActivity {
+public class UserList extends AppCompatActivity implements SelectListener {
 
 
     private RecyclerView recyclerView;
@@ -57,7 +59,7 @@ public class UserList extends AppCompatActivity {
                         userList.add(user);
                     }
                 }
-                userAdapter = new UserAdapter(UserList.this, userList);
+                userAdapter = new UserAdapter(UserList.this, userList, UserList.this);
 
             }
 
@@ -70,6 +72,12 @@ public class UserList extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void itemClicked(User user) {
+        Toast.makeText(this,"clicked: " + user.getName().toString(),Toast.LENGTH_SHORT).show();
 
     }
 }
