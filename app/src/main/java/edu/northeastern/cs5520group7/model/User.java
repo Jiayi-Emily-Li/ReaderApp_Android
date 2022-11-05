@@ -8,6 +8,9 @@ public class User {
     private String token;
     private ArrayList<History> histories;
 
+    public User() {
+
+    }
 
     public User(String userId, String name, String token) {
         this.userId = userId;
@@ -53,5 +56,16 @@ public class User {
 
     public void addHistory(String from, String to, String time, String image) {
         this.histories.add(new History(from, to, time, image));
+    }
+
+
+    @Override
+    public String toString() {
+        String s = new String();
+        for (History h : histories) {
+            s += h.toString() + '\n';
+        }
+
+        return s;
     }
 }

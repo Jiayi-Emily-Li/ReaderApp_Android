@@ -24,6 +24,7 @@ public class UserHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserHomeActivity.this, HistoryActivity.class);
+                intent.putExtra("name", name);
                 UserHomeActivity.this.startActivity(intent);
             }
         });
@@ -34,6 +35,7 @@ public class UserHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserHomeActivity.this, UserList.class);
                 UserHomeActivity.this.startActivity(intent);
+
             }
         });
 
