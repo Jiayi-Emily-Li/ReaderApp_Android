@@ -40,13 +40,17 @@ public class LogInActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 LogInActivity.this.startActivity(intent);
                 User user = new User("userId", name, "token1");
+
                 user.addHistory("abc", name, new Date().toString(), "star");
-                user.addHistory("cds", name, new Date().toString(), "circle");
-                user.addHistory("kfc", name, new Date().toString(), "star");
+                user.addHistory("efd", name, new Date().toString(), "star");
+                user.addHistory("cds", name, new Date().toString(), "radio");
+                user.addHistory("kfc", name, new Date().toString(), "cross");
 
                 user.addHistory(name, "qwe", new Date().toString(), "star");
-                user.addHistory(name, "wq", new Date().toString(), "star");
-                user.addHistory(name, "xzczx", new Date().toString(), "star");
+                user.addHistory(name, "wq", new Date().toString(), "radio");
+                user.addHistory(name, "bmc", new Date().toString(), "radio");
+                user.addHistory(name, "xzczx", new Date().toString(), "cross");
+                user.addHistory(name, "kkj", new Date().toString(), "cross");
 
                 userRef.child(name).setValue(user);
             }
