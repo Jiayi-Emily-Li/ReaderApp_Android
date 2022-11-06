@@ -73,7 +73,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
                         String token = usersSnapshot.child("token").getValue().toString();
 
                         User user = new User(userId, name,token);
+                        if(!user.getName().equals(currentUser)){
                         userList.add(user);
+                        }
 
                 }}
                 userAdapter = new UserAdapter(UserList.this, userList, UserList.this);
