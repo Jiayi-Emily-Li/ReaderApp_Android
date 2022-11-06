@@ -1,24 +1,27 @@
 package edu.northeastern.cs5520group7.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class User {
     private String userId;
     private String name;
     private String token;
-    private HashMap<String, String> histories;
+    private ArrayList<History> histories;
 
-    public User(){
+
+    public User() {
 
     }
+
     public User(String userId, String name, String token) {
         this.userId = userId;
         this.name = name;
         this.token = token;
-        this.histories = new HashMap<>();
+        this.histories = new ArrayList<>();
     }
 
-    public User(String userId, String name, String token, HashMap<String, String> histories) {
+    public User(String userId, String name, String token, ArrayList<History> histories) {
         this.userId = userId;
         this.name = name;
         this.token = token;
@@ -49,14 +52,22 @@ public class User {
         this.token = token;
     }
 
-    public HashMap<String, String> getHistories() {
+    public ArrayList<History> getHistories() {
         return histories;
     }
 
     public void addHistory(String from, String to, String time, String image) {
-        this.histories.put("from", from);
-        this.histories.put("to", to);
-        this.histories.put("time", time);
-        this.histories.put("image", image);
+        this.histories.add(new History(from, to, time, image));
+    }
+
+
+    @Override
+    public String toString() {
+        String s = new String();
+        for (History h : histories) {
+            s += h.toString() + '\n';
+        }
+
+        return s;
     }
 }

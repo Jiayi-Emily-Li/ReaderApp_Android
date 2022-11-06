@@ -8,6 +8,9 @@ public class History implements Serializable {
     private String time;
     private String image;
 
+    public History () {
+
+    }
     public History(String from, String to, String time, String image) {
         this.from = from;
         this.to = to;
@@ -47,5 +50,11 @@ public class History implements Serializable {
         this.image = image;
     }
 
+    @Override
+    public String toString() {
+        return  "from: " + from + '\n' +
+                "time: " + time + '\n' +
+                "sticker: " + image + '\n';
+    }
 }
 

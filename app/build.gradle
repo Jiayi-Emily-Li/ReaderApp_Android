@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+
+
     signingConfigs {
         debug {
             storeFile file('/Users/jiayili/Documents/JLKeystore')
@@ -26,6 +28,7 @@ android {
         }
     }
 
+
 //    signingConfigs {
 //        debug {
 //            storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
@@ -47,6 +50,7 @@ android {
 //            keyPassword '13790706'
 //        }
 //    }
+
 
 
     compileSdk 32

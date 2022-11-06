@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
+import edu.northeastern.cs5520group7.model.User;
+
 public class LogInActivity extends AppCompatActivity {
 
     String name;
@@ -26,16 +30,29 @@ public class LogInActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.userName);
 
         submitButton = (Button) findViewById(R.id.submitButton);
-        userRef = FirebaseDatabase.getInstance().getReference().child("users");
+        userRef = FirebaseDatabase.getInstance().getReference("users");
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 name = userName.getText().toString();
+                name = userName.getText().toString();
 
                 Intent intent = new Intent(LogInActivity.this, UserHomeActivity.class);
                 intent.putExtra("name", name);
                 LogInActivity.this.startActivity(intent);
+                User user = new User("userId", name, "token1");
 
+                user.addHistory("abc", name, new Date().toString(), "star");
+                user.addHistory("efd", name, new Date().toString(), "star");
+                user.addHistory("cds", name, new Date().toString(), "radio");
+                user.addHistory("kfc", name, new Date().toString(), "cross");
+
+                user.addHistory(name, "qwe", new Date().toString(), "star");
+                user.addHistory(name, "wq", new Date().toString(), "radio");
+                user.addHistory(name, "bmc", new Date().toString(), "radio");
+                user.addHistory(name, "xzczx", new Date().toString(), "cross");
+                user.addHistory(name, "kkj", new Date().toString(), "cross");
+
+                userRef.child(name).setValue(user);
             }
         });
 
