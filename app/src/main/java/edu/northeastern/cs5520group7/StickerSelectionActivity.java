@@ -63,20 +63,18 @@ public class StickerSelectionActivity extends AppCompatActivity {
         targetToken = getIntent().getStringExtra("Token");
         Log.d("clickedName", clickedName);
         Log.d("currentUser", currentUser);
-        Log.d("token",targetToken);
+        Log.d("token", targetToken);
 
         userRef = FirebaseDatabase.getInstance().getReference("users");
         Date currentTime = Calendar.getInstance().getTime();
         String time = currentTime.toString();
 
 
-
-
-
         starBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateHistoryValue(currentUser, clickedName, time, "star");
+                updatecurrentUserHistoryValue(currentUser, clickedName, time, "star");
+                updateReceivedUserHistoryValue(currentUser, clickedName, time, "star");
 
 
             }
@@ -85,14 +83,17 @@ public class StickerSelectionActivity extends AppCompatActivity {
         radioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateHistoryValue(currentUser, clickedName, time, "radio");
+                updatecurrentUserHistoryValue(currentUser, clickedName, time, "radio");
+                updateReceivedUserHistoryValue(currentUser, clickedName, time, "radio");
             }
         });
 
         crossBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateHistoryValue(currentUser, clickedName, time, "cross");
+                updatecurrentUserHistoryValue(currentUser, clickedName, time, "cross");
+                updateReceivedUserHistoryValue(currentUser, clickedName, time, "cross");
+
             }
         });
 
@@ -106,7 +107,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         backtoHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StickerSelectionActivity.this,UserHomeActivity.class);
+                Intent intent = new Intent(StickerSelectionActivity.this, UserHomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -114,35 +115,38 @@ public class StickerSelectionActivity extends AppCompatActivity {
 
     }
 
-        private void updateHistoryValue(String from, String to, String time, String image){
-            History newHistory = new History(from, to, time, image);
+    private void updatecurrentUserHistoryValue(String from, String to, String time, String image) {
+        History newHistory = new History(from, to, time, image);
 
-            DatabaseReference historyCurrUserRef = userRef.child(currentUser).child("histories");
-
-            Log.d("currU", currentUser.toString());
-           historyCurrUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
-               @Override
-               public void onComplete(@NonNull Task<Void> task) {
-                   if(task.isSuccessful()){
-                       Toast.makeText(StickerSelectionActivity.this,"Sent successfully", Toast.LENGTH_SHORT).show();
-                   }
-               }
-           });
+        DatabaseReference historyCurrUserRef = userRef.child(currentUser).child("histories");
 
 
-
-            DatabaseReference historyClickedUserRef = userRef.child(clickedName).child("histories");
-
-            Log.d("recU", clickedName.toString());
-            historyClickedUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(StickerSelectionActivity.this,"Sent successfully", Toast.LENGTH_SHORT).show();
-                    }
+        Log.d("currU", currentUser.toString());
+        historyCurrUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(StickerSelectionActivity.this, "Sent successfully", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
+            }
+        });
+    }
+
+    private void updateReceivedUserHistoryValue(String from, String to, String time, String image) {
+        History newHistory = new History(from, to, time, image);
+
+        DatabaseReference historyClickedUserRef = userRef.child(clickedName).child("histories");
+
+        Log.d("recU", clickedName.toString());
+        historyClickedUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(StickerSelectionActivity.this, "Sent successfully", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
 
     /**
