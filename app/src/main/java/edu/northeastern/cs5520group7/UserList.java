@@ -1,5 +1,6 @@
 package edu.northeastern.cs5520group7;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
+    private String currentUser;
 
 
 
@@ -43,7 +45,8 @@ public class UserList extends AppCompatActivity implements SelectListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        currentUser = getIntent().getStringExtra("currentUser");
+
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()/*.child("Users")*/;
 
 
@@ -85,27 +88,16 @@ public class UserList extends AppCompatActivity implements SelectListener {
         });
 
 
-
-
-
     }
 
     @Override
     public void itemClicked(User user) {
+         String userClicked = user.getName();
         Toast.makeText(this,"clicked: " + user.getName(),Toast.LENGTH_SHORT).show();
-        new Thread(new Runnable(){
-
-            @Override
-            public void run() {
-                sendMessageToDevice(user.getToken());
-            }
-        }).start();
+        Intent intent = new Intent(UserList.this, StickerSelectionActivity.class);
+        intent.putExtra("clickedName", userClicked);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
     }
 
-    private void sendMessageToDevice(String targetToken){
-        JSONObject jPayload = new JSONObject();
-        JSONObject jNotification = new JSONObject();
-        JSONObject jdata = new JSONObject();
-
-    }
 }
