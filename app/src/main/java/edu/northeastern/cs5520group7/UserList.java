@@ -93,10 +93,12 @@ public class UserList extends AppCompatActivity implements SelectListener {
     @Override
     public void itemClicked(User user) {
          String userClicked = user.getName();
+         String targetToken = user.getToken();
         Toast.makeText(this,"clicked: " + user.getName(),Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(UserList.this, StickerSelectionActivity.class);
         intent.putExtra("clickedName", userClicked);
         intent.putExtra("currentUser", currentUser);
+        intent.putExtra("Token", targetToken);
         startActivity(intent);
     }
 

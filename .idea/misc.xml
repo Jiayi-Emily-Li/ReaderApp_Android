@@ -8,7 +8,10 @@
         <entry key="app/src/main/res/layout/activity_history.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.5529891304347826" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.19021739130434784" />
+        <entry key="app/src/main/res/layout/activity_receive_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_retrofit.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout/activity_send_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sticker_selection.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.22395833333333334" />

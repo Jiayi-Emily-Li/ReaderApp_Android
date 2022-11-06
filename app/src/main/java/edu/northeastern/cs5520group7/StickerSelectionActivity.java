@@ -14,14 +14,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.installations.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,10 +36,13 @@ public class StickerSelectionActivity extends AppCompatActivity {
     ImageButton starBtn;
     ImageButton radioBtn;
     ImageButton crossBtn;
+
+    Button notifyFriendBtn;
+    Button backtoHomeBtn;
+
     String currentUser;
     String clickedName;
-    Integer currUserHistLength;
-    Integer receiverHistLength;
+    String targetToken;
     private DatabaseReference userRef;
 
     @Override
@@ -52,15 +54,22 @@ public class StickerSelectionActivity extends AppCompatActivity {
         radioBtn = (ImageButton) findViewById(R.id.radioBtn);
         crossBtn = (ImageButton) findViewById(R.id.crossBtn);
 
+        notifyFriendBtn = (Button) findViewById(R.id.NotiBtn);
+        backtoHomeBtn = (Button) findViewById(R.id.backUserHome);
+
 
         clickedName = getIntent().getStringExtra("clickedName");
         currentUser = getIntent().getStringExtra("currentUser");
+        targetToken = getIntent().getStringExtra("Token");
         Log.d("clickedName", clickedName);
         Log.d("currentUser", currentUser);
+        Log.d("token",targetToken);
 
         userRef = FirebaseDatabase.getInstance().getReference("users");
         Date currentTime = Calendar.getInstance().getTime();
         String time = currentTime.toString();
+
+
 
 
 
@@ -86,6 +95,23 @@ public class StickerSelectionActivity extends AppCompatActivity {
                 updateHistoryValue(currentUser, clickedName, time, "cross");
             }
         });
+
+        notifyFriendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //sendMessageToDevice(targetToken);
+            }
+        });
+
+        backtoHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StickerSelectionActivity.this,UserHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
         private void updateHistoryValue(String from, String to, String time, String image){
@@ -94,7 +120,14 @@ public class StickerSelectionActivity extends AppCompatActivity {
             DatabaseReference historyCurrUserRef = userRef.child(currentUser).child("histories");
 
             Log.d("currU", currentUser.toString());
-           historyCurrUserRef.push().setValue(newHistory);
+           historyCurrUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
+               @Override
+               public void onComplete(@NonNull Task<Void> task) {
+                   if(task.isSuccessful()){
+                       Toast.makeText(StickerSelectionActivity.this,"Sent successfully", Toast.LENGTH_SHORT).show();
+                   }
+               }
+           });
 
 
 
@@ -109,13 +142,45 @@ public class StickerSelectionActivity extends AppCompatActivity {
                     }
                 }
             });
-
-
-            Intent intent = new Intent(StickerSelectionActivity.this,UserHomeActivity.class);
-            startActivity(intent);
-
-
-
-
         }
+
+
+    /**
+     * Pushes a notification to a given device-- in particular, this device,
+     * because that's what the instanceID token is defined to be.
+     */
+   /* private void sendMessageToDevice(String targetToken) {
+
+        // Prepare data
+        JSONObject jPayload = new JSONObject();
+        JSONObject jNotification = new JSONObject();
+        JSONObject jdata = new JSONObject();
+        try {
+            jNotification.put("title", "Message Title from 'SEND MESSAGE TO CLIENT BUTTON'");
+            /*
+            // We can add more details into the notification if we want.
+            // We happen to be ignoring them for this demo.
+            jNotification.put("click_action", "OPEN_ACTIVITY_1");
+            */
+           // jdata.put("title", "data title from 'SEND MESSAGE TO CLIENT BUTTON'");
+           // jdata.put("content", "data content from 'SEND MESSAGE TO CLIENT BUTTON'");
+
+            /***
+             * The Notification object is now populated.
+             * Next, build the Payload that we send to the server.
+             */
+
+            // If sending to a single client
+           /* jPayload.put("to", targetToken); // CLIENT_REGISTRATION_TOKEN);
+
+
+            jPayload.put("priority", "high");
+            jPayload.put("notification", jNotification);
+            jPayload.put("data", jdata);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }*/
 }

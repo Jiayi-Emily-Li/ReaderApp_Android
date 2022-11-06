@@ -11,12 +11,11 @@
         android:id="@+id/radioBtn"
         android:layout_width="104dp"
         android:layout_height="56dp"
-        android:layout_marginTop="68dp"
 
         android:backgroundTint="@color/white"
         android:contentDescription="@string/radioimge"
+        app:layout_constraintBottom_toTopOf="@+id/starBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selection_tv"
         app:srcCompat="@android:drawable/btn_radio" />
@@ -27,21 +26,19 @@
         android:layout_height="58dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/crossimge"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backUserHome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/starBtn"
-        app:layout_constraintVertical_bias="0.273"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ImageButton
         android:id="@+id/starBtn"
         android:layout_width="105dp"
         android:layout_height="65dp"
-        android:layout_marginTop="68dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/starimge"
+        app:layout_constraintBottom_toTopOf="@+id/crossBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioBtn"
@@ -52,11 +49,33 @@
         android:id="@+id/selection_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:text="@string/imgSelection"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backUserHome"
+        android:layout_width="148dp"
+        android:layout_height="50dp"
+        android:text="@string/backtoHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/NotiBtn"
+        app:layout_constraintTop_toBottomOf="@+id/crossBtn" />
+
+    <Button
+        android:id="@+id/NotiBtn"
+        android:layout_width="148dp"
+        android:layout_height="49dp"
+        android:text="@string/sendNotification"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/backUserHome"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crossBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

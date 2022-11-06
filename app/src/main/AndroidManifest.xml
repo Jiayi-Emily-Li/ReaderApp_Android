@@ -17,6 +17,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".notification.ReceiveNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notification.SendNotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".StickerSelectionActivity"
             android:exported="false" />
         <activity

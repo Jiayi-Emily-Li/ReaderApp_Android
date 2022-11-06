@@ -4,5 +4,7 @@
     <string name="starimge">star</string>
     <string name="crossimge">cross</string>
     <string name="radioimge">radio</string>
+    <string name="sendNotification">Notify friend</string>
+    <string name="backtoHome">Back</string>
 
 </resources>
