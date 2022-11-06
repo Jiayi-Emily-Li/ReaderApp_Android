@@ -1,16 +1,22 @@
 package edu.northeastern.cs5520group7;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.northeastern.cs5520group7.model.History;
 import edu.northeastern.cs5520group7.model.User;
@@ -30,7 +38,9 @@ public class StickerSelectionActivity extends AppCompatActivity {
     ImageButton radioBtn;
     ImageButton crossBtn;
     String currentUser;
-    User sender;
+    String clickedName;
+    Integer currUserHistLength;
+    Integer receiverHistLength;
     private DatabaseReference userRef;
 
     @Override
@@ -43,7 +53,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         crossBtn = (ImageButton) findViewById(R.id.crossBtn);
 
 
-        String clickedName = getIntent().getStringExtra("clickedName");
+        clickedName = getIntent().getStringExtra("clickedName");
         currentUser = getIntent().getStringExtra("currentUser");
         Log.d("clickedName", clickedName);
         Log.d("currentUser", currentUser);
@@ -51,6 +61,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         userRef = FirebaseDatabase.getInstance().getReference("users");
         Date currentTime = Calendar.getInstance().getTime();
         String time = currentTime.toString();
+
 
 
         starBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,30 +87,35 @@ public class StickerSelectionActivity extends AppCompatActivity {
             }
         });
     }
+
         private void updateHistoryValue(String from, String to, String time, String image){
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
-                    if (user.getName() == currentUser) {
-                        sender.setName(currentUser);
-                        sender.setToken(user.getToken());
-                        String id = user.getUserId();
-                        sender.setUserId(id);
-                        for(History history : user.getHistories()){
-                            sender.addHistory(history.getFrom(), history.getTo(), history.getTime(), history.getImage());
-                        }
-                        sender.addHistory(from, to, time, image);
+            History newHistory = new History(from, to, time, image);
+
+            DatabaseReference historyCurrUserRef = userRef.child(currentUser).child("histories");
+
+            Log.d("currU", currentUser.toString());
+           historyCurrUserRef.push().setValue(newHistory);
+
+
+
+            DatabaseReference historyClickedUserRef = userRef.child(clickedName).child("histories");
+
+            Log.d("recU", clickedName.toString());
+            historyClickedUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(StickerSelectionActivity.this,"Sent successfully", Toast.LENGTH_SHORT).show();
                     }
                 }
-                userRef.child(currentUser).setValue(sender);
-            }
+            });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
+            Intent intent = new Intent(StickerSelectionActivity.this,UserHomeActivity.class);
+            startActivity(intent);
+
+
+
+
+        }
 }
