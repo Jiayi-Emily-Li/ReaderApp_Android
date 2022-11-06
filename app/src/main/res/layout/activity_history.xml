@@ -10,7 +10,7 @@
         android:id="@+id/btn_star"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="96dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toStartOf="@+id/btn_radio"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,15 +19,16 @@
         app:srcCompat="@android:drawable/btn_star" />
 
     <ImageButton
-        android:id="@+id/btn_star2"
+        android:id="@+id/btn_cross"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="96dp"
         android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@+id/btn_radio"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_radio"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/startCount_sent"
@@ -40,67 +41,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_star"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
-        android:id="@+id/crossCount_sent"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
+        android:text="You've received:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/radioCount_sent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cross"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/btn_cross"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="72dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_radio"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <ImageButton
-        android:id="@+id/btn_cross2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="252dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toEndOf="@+id/btn_radio"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <ImageButton
-        android:id="@+id/btn_radio"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="72dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cross"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_star"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_radio" />
-
-    <ImageButton
-        android:id="@+id/btn_radio2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="252dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cross"
-        app:layout_constraintStart_toEndOf="@+id/btn_star"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_radio" />
+        app:layout_constraintVertical_bias="0.293" />
 
     <TextView
         android:id="@+id/radioCount_sent"
@@ -113,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/startCount_sent"
         app:layout_constraintTop_toBottomOf="@+id/btn_radio"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
         android:id="@+id/textView2"
@@ -124,52 +77,40 @@
         android:text="You've already sent:"
         app:layout_constraintBottom_toTopOf="@+id/btn_radio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/btn_radio"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="96dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cross"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_star"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_radio" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/crossCount_sent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginBottom="491dp"
-        android:text="You've received:"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioCount_sent" />
-
-    <TextView
-        android:id="@+id/startText_received"
-        android:layout_width="125dp"
-        android:layout_height="415dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/radioText_received"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_star2" />
-
-    <TextView
-        android:id="@+id/radioText_received"
-        android:layout_width="125dp"
-        android:layout_height="415dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/crossText_received"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/startText_received"
-        app:layout_constraintTop_toBottomOf="@+id/btn_radio2" />
+        app:layout_constraintStart_toEndOf="@+id/radioCount_sent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cross"
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
         android:id="@+id/crossText_received"
-        android:layout_width="125dp"
-        android:layout_height="415dp"
+        android:layout_width="115dp"
+        android:layout_height="228dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
@@ -177,6 +118,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/radioText_received"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cross2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_cross2"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <ImageButton
+        android:id="@+id/btn_radio2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="236dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cross"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/btn_star"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_radio" />
+
+    <TextView
+        android:id="@+id/startText_received"
+        android:layout_width="133dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/radioText_received"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_star2"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <ImageButton
+        android:id="@+id/btn_star2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="236dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toStartOf="@+id/btn_radio"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star" />
+
+    <TextView
+        android:id="@+id/radioText_received"
+        android:layout_width="126dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/crossText_received"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/startText_received"
+        app:layout_constraintTop_toBottomOf="@+id/btn_radio2"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <ImageButton
+        android:id="@+id/btn_cross2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="236dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toEndOf="@+id/btn_radio"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -108,6 +108,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StickerSelectionActivity.this, UserHomeActivity.class);
+                intent.putExtra("name", currentUser);
                 startActivity(intent);
             }
         });

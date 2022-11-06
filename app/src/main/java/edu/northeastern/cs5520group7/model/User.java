@@ -1,12 +1,14 @@
 package edu.northeastern.cs5520group7.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String userId;
     private String name;
     private String token;
-    private ArrayList<History> histories;
+    private Map<String, History> histories;
 
     public User() {
 
@@ -16,10 +18,10 @@ public class User {
         this.userId = userId;
         this.name = name;
         this.token = token;
-        this.histories = new ArrayList<>();
+        this.histories = new HashMap<>();
     }
 
-    public User(String userId, String name, String token, ArrayList<History> histories) {
+    public User(String userId, String name, String token, Map<String, History> histories) {
         this.userId = userId;
         this.name = name;
         this.token = token;
@@ -50,22 +52,22 @@ public class User {
         this.token = token;
     }
 
-    public ArrayList<History> getHistories() {
+    public Map<String, History> getHistories() {
         return histories;
     }
 
-    public void addHistory(String from, String to, String time, String image) {
-        this.histories.add(new History(from, to, time, image));
-    }
+    //    public void addHistory(String from, String to, String time, String image) {
+//        this.histories.add(new History(from, to, time, image));
+//    }
 
 
-    @Override
-    public String toString() {
-        String s = new String();
-        for (History h : histories) {
-            s += h.toString() + '\n';
-        }
-
-        return s;
-    }
+//    @Override
+//    public String toString() {
+//        String s = new String();
+//        for (History h : histories) {
+//            s += h.toString() + '\n';
+//        }
+//
+//        return s;
+//    }
 }

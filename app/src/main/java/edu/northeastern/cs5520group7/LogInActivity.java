@@ -2,17 +2,25 @@ package edu.northeastern.cs5520group7;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import edu.northeastern.cs5520group7.model.History;
 import edu.northeastern.cs5520group7.model.User;
 
 public class LogInActivity extends AppCompatActivity {
@@ -35,26 +43,54 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = userName.getText().toString();
-
                 Intent intent = new Intent(LogInActivity.this, UserHomeActivity.class);
                 intent.putExtra("name", name);
                 LogInActivity.this.startActivity(intent);
-                User user = new User("userId", name, "token1");
 
-                user.addHistory("abc", name, new Date().toString(), "star");
-                user.addHistory("efd", name, new Date().toString(), "star");
-                user.addHistory("cds", name, new Date().toString(), "radio");
-                user.addHistory("kfc", name, new Date().toString(), "cross");
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.hasChild(name)) {
+                            User user = new User("userId", name, "token1");
+                            userRef.child(name).setValue(user);
+                        }
 
-                user.addHistory(name, "qwe", new Date().toString(), "star");
-                user.addHistory(name, "wq", new Date().toString(), "radio");
-                user.addHistory(name, "bmc", new Date().toString(), "radio");
-                user.addHistory(name, "xzczx", new Date().toString(), "cross");
-                user.addHistory(name, "kkj", new Date().toString(), "cross");
+                    }
 
-                userRef.child(name).setValue(user);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+//                Log.w(TAG,"Fail to read data", error.toException());
+                    }
+                });
+
             }
         });
 
+    }
+
+
+    public void findUser() {
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = null;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    user = dataSnapshot.getValue(User.class);
+                    if (user.getName().equals(name)) {
+                        break;
+                    }
+                }
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+//                Log.w(TAG,"Fail to read data", error.toException());
+            }
+        });
     }
 }
