@@ -17,7 +17,6 @@ public class UserHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
-
         showHistoryButton = (Button) findViewById(R.id.showHistoryButton);
         name = getIntent().getStringExtra("name");
         showHistoryButton.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +33,7 @@ public class UserHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserHomeActivity.this, UserList.class);
+                intent.putExtra("currentUser", name);
                 UserHomeActivity.this.startActivity(intent);
 
             }

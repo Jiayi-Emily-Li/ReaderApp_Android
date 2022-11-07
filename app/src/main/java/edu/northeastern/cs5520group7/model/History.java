@@ -3,10 +3,10 @@ package edu.northeastern.cs5520group7.model;
 import java.io.Serializable;
 
 public class History implements Serializable {
-    private String from;
-    private String to;
-    private String time;
-    private String image;
+    String from;
+    String to;
+    String time;
+    String image;
 
     public History () {
 
