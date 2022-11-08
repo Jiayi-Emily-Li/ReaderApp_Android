@@ -38,7 +38,6 @@ public class StickerSelectionActivity extends AppCompatActivity {
     ImageButton radioBtn;
     ImageButton crossBtn;
 
-    Button notifyFriendBtn;
     Button backtoHomeBtn;
 
     String currentUser;
@@ -55,9 +54,6 @@ public class StickerSelectionActivity extends AppCompatActivity {
         starBtn = (ImageButton) findViewById(R.id.starBtn);
         radioBtn = (ImageButton) findViewById(R.id.radioBtn);
         crossBtn = (ImageButton) findViewById(R.id.crossBtn);
-
-        notifyFriendBtn = (Button) findViewById(R.id.NotiBtn);
-        backtoHomeBtn = (Button) findViewById(R.id.backUserHome);
 
 
         clickedName = getIntent().getStringExtra("clickedName");
@@ -104,22 +100,6 @@ public class StickerSelectionActivity extends AppCompatActivity {
             }
         });
 
-        notifyFriendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //sendMessageToDevice(targetToken);
-            }
-        });
-
-        backtoHomeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StickerSelectionActivity.this, UserHomeActivity.class);
-                intent.putExtra("name", currentUser);
-                startActivity(intent);
-            }
-        });
-
 
     }
 
@@ -130,14 +110,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
 
 
         Log.d("currU", currentUser.toString());
-        historyCurrUserRef.push().setValue(newHistory).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(StickerSelectionActivity.this, "Sent successfully", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        historyCurrUserRef.push().setValue(newHistory);
     }
 
     private void updateReceivedUserHistoryValue(String from, String to, String time, String image) {
@@ -157,44 +130,6 @@ public class StickerSelectionActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Pushes a notification to a given device-- in particular, this device,
-     * because that's what the instanceID token is defined to be.
-     */
-   /* private void sendMessageToDevice(String targetToken) {
-
-        // Prepare data
-        JSONObject jPayload = new JSONObject();
-        JSONObject jNotification = new JSONObject();
-        JSONObject jdata = new JSONObject();
-        try {
-            jNotification.put("title", "Message Title from 'SEND MESSAGE TO CLIENT BUTTON'");
-            /*
-            // We can add more details into the notification if we want.
-            // We happen to be ignoring them for this demo.
-            jNotification.put("click_action", "OPEN_ACTIVITY_1");
-            */
-           // jdata.put("title", "data title from 'SEND MESSAGE TO CLIENT BUTTON'");
-           // jdata.put("content", "data content from 'SEND MESSAGE TO CLIENT BUTTON'");
-
-            /***
-             * The Notification object is now populated.
-             * Next, build the Payload that we send to the server.
-             */
-
-            // If sending to a single client
-           /* jPayload.put("to", targetToken); // CLIENT_REGISTRATION_TOKEN);
-
-
-            jPayload.put("priority", "high");
-            jPayload.put("notification", jNotification);
-            jPayload.put("data", jdata);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }*/
             private void sendMessage(String targetToken, ImageButton selected) {
                 JSONObject jPayload = new JSONObject();
                 JSONObject jNotification = new JSONObject();

@@ -21,18 +21,6 @@
         app:srcCompat="@android:drawable/btn_radio" />
 
     <ImageButton
-        android:id="@+id/crossBtn"
-        android:layout_width="101dp"
-        android:layout_height="58dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/crossimge"
-        app:layout_constraintBottom_toTopOf="@+id/backUserHome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/starBtn"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <ImageButton
         android:id="@+id/starBtn"
         android:layout_width="105dp"
         android:layout_height="65dp"
@@ -45,6 +33,19 @@
         app:srcCompat="@android:drawable/btn_star"
         tools:ignore="ImageContrastCheck" />
 
+    <ImageButton
+        android:id="@+id/crossBtn"
+        android:layout_width="101dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/crossimge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/starBtn"
+        app:srcCompat="@android:drawable/ic_delete" />
+
     <TextView
         android:id="@+id/selection_tv"
         android:layout_width="wrap_content"
@@ -55,27 +56,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/backUserHome"
-        android:layout_width="148dp"
-        android:layout_height="50dp"
-        android:text="@string/backtoHome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/NotiBtn"
-        app:layout_constraintTop_toBottomOf="@+id/crossBtn" />
-
-    <Button
-        android:id="@+id/NotiBtn"
-        android:layout_width="148dp"
-        android:layout_height="49dp"
-        android:text="@string/sendNotification"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/backUserHome"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crossBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
