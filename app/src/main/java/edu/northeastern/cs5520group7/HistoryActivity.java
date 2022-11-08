@@ -69,13 +69,18 @@ public class HistoryActivity extends AppCompatActivity {
                 if (user != null) {
                     List<History> fromHistoryList = new ArrayList<>();
                     List<History> toHistoryList = new ArrayList<>();
-                    for (History history : user.getHistories()) {
-                        if (history.getFrom().equals(name)) {
-                            fromHistoryList.add(history);
-                        }
 
-                        if (history.getTo().equals(name)) {
-                            toHistoryList.add(history);
+                    if (user.getHistories() != null) {
+                        for (History history : user.getHistories().values()) {
+                            if (history.getFrom().equals(name)) {
+                                Log.d(TAG, "From History " + history.toString());
+                                fromHistoryList.add(history);
+                            }
+
+                            if (history.getTo().equals(name)) {
+                                Log.d(TAG, "To history " + history.toString());
+                                toHistoryList.add(history);
+                            }
                         }
                     }
 

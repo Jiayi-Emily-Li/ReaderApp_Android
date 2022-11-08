@@ -2,6 +2,8 @@ package edu.northeastern.cs5520group7;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +18,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 import edu.northeastern.cs5520group7.model.History;
 
@@ -34,6 +45,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
     String clickedName;
     String targetToken;
     private DatabaseReference userRef;
+    private static final String SERVER_KEY = "key=AAAAZOyBdhI:APA91bFs6BMDiNyffh588kESWGKO1pvanPCSBt3dQPrsMSuXFv9QKDAvehzsSTGDqrppWJ5uWzMUZg0tMQLcx0wnzCdyeWSxtl1m2bwpW76Y9TGFOvV0brjkzFX2Ji4m9nQqVAnatETE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +77,12 @@ public class StickerSelectionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 updatecurrentUserHistoryValue(currentUser, clickedName, time, "star");
                 updateReceivedUserHistoryValue(currentUser, clickedName, time, "star");
-
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        sendMessage(targetToken, starBtn);
+                    }
+                }).start();
 
             }
         });
@@ -98,6 +115,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StickerSelectionActivity.this, UserHomeActivity.class);
+                intent.putExtra("name", currentUser);
                 startActivity(intent);
             }
         });
@@ -177,4 +195,57 @@ public class StickerSelectionActivity extends AppCompatActivity {
         }
 
     }*/
+            private void sendMessage(String targetToken, ImageButton selected) {
+                JSONObject jPayload = new JSONObject();
+                JSONObject jNotification = new JSONObject();
+
+                try{
+
+                    jNotification.put("title", "Stick It To 'Em");
+                    jNotification.put("body", "Sticker Sent From " + currentUser);
+                    jNotification.put("sound", "default");
+                    jNotification.put("badge", "1");
+                    jNotification.put("image", selected);
+                    jNotification.put("click_action", "OPEN_ACTIVITY_1");
+
+                    // If sending to a single client
+                    jPayload.put("to", targetToken);
+                    jPayload.put("priority", "high");
+                    jPayload.put("notification", jNotification);
+
+                    // HTTP and send the payload
+                    URL url = new URL("https://fcm.googleapis.com/fcm/send");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", SERVER_KEY);
+                    conn.setRequestProperty("Content-Type", "application/json");
+                    conn.setDoOutput(true);
+
+                    // Send FCM message content.
+                    OutputStream outputStream = conn.getOutputStream();
+                    outputStream.write(jPayload.toString().getBytes());
+                    outputStream.close();
+
+                    // Read FCM response.
+                    InputStream inputStream = conn.getInputStream();
+                    final String resp = convertStreamToString(inputStream);
+
+                    Handler h = new Handler(Looper.getMainLooper());
+                    h.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("fcm", "run: " + resp);
+                        }
+                    });
+
+                } catch (JSONException | IOException e) {
+                    Log.e("fcm","sendMessageToNews threw error",e);
+                }
+            }
+
+    private String convertStreamToString(InputStream is) {
+        Scanner s = new Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next().replace(",", ",\n") : "";
+    }
+
 }

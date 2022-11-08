@@ -52,9 +52,12 @@ public class History implements Serializable {
 
     @Override
     public String toString() {
-        return  "from: " + from + '\n' +
-                "time: " + time + '\n' +
-                "sticker: " + image + '\n';
+        return "History{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", time='" + time + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }
 
