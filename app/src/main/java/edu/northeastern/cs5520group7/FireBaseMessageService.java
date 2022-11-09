@@ -30,6 +30,7 @@ public class FireBaseMessageService extends FirebaseMessagingService{
         Log.d(TAG, "service running");
     }
 
+    // cited from: https://firebase.google.com/docs/cloud-messaging/android/receive
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);

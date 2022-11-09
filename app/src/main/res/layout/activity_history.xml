@@ -50,10 +50,9 @@
         android:text="You've received:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.293" />
+        app:layout_constraintVertical_bias="0.304" />
 
     <TextView
         android:id="@+id/radioCount_sent"
@@ -110,7 +109,7 @@
     <TextView
         android:id="@+id/crossText_received"
         android:layout_width="115dp"
-        android:layout_height="228dp"
+        android:layout_height="410dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
@@ -135,8 +134,8 @@
 
     <TextView
         android:id="@+id/startText_received"
-        android:layout_width="133dp"
-        android:layout_height="220dp"
+        android:layout_width="134dp"
+        android:layout_height="408dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
@@ -161,8 +160,8 @@
 
     <TextView
         android:id="@+id/radioText_received"
-        android:layout_width="126dp"
-        android:layout_height="225dp"
+        android:layout_width="132dp"
+        android:layout_height="409dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"

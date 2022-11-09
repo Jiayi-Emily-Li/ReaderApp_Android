@@ -17,28 +17,46 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".notification.ReceiveNotificationActivity"
+            android:name=".About"
             android:exported="false" />
-        <activity
-            android:name=".notification.SendNotificationActivity"
-            android:exported="false" />
+
+        <service
+            android:name=".FireBaseMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+<!--        <activity-->
+<!--            android:name=".notification.ReceiveNotificationActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".notification.SendNotificationActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".StickerSelectionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".HistoryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".UserHomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".LogInActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".UserList"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".Stick"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".RetrofitActivity"

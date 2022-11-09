@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Button stickButton;
+    private Button aboutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        aboutButton = (Button) findViewById(R.id.aboutButton);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, About.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
 
 
     }

@@ -1,6 +1,5 @@
 package edu.northeastern.cs5520group7;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,7 +37,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
     ImageButton radioBtn;
     ImageButton crossBtn;
 
-    Button backtoHomeBtn;
+
 
     String currentUser;
     String clickedName;
@@ -71,7 +70,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         starBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updatecurrentUserHistoryValue(currentUser, clickedName, time, "star");
+                updateCurrentUserHistoryValue(currentUser, clickedName, time, "star");
                 updateReceivedUserHistoryValue(currentUser, clickedName, time, "star");
                 new Thread(new Runnable() {
                     @Override
@@ -86,7 +85,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         radioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updatecurrentUserHistoryValue(currentUser, clickedName, time, "radio");
+                updateCurrentUserHistoryValue(currentUser, clickedName, time, "radio");
                 updateReceivedUserHistoryValue(currentUser, clickedName, time, "radio");
             }
         });
@@ -94,7 +93,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
         crossBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updatecurrentUserHistoryValue(currentUser, clickedName, time, "cross");
+                updateCurrentUserHistoryValue(currentUser, clickedName, time, "cross");
                 updateReceivedUserHistoryValue(currentUser, clickedName, time, "cross");
 
             }
@@ -103,7 +102,7 @@ public class StickerSelectionActivity extends AppCompatActivity {
 
     }
 
-    private void updatecurrentUserHistoryValue(String from, String to, String time, String image) {
+    private void updateCurrentUserHistoryValue(String from, String to, String time, String image) {
         History newHistory = new History(from, to, time, image);
 
         DatabaseReference historyCurrUserRef = userRef.child(currentUser).child("histories");
