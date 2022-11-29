@@ -17,6 +17,15 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn"
+            android:exported="false" />
+        <activity
+            android:name=".Entry"
+            android:exported="false" />
+        <activity
             android:name=".About"
             android:exported="false" />
 
@@ -26,14 +35,12 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-<!--        <activity-->
-<!--            android:name=".notification.ReceiveNotificationActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".notification.SendNotificationActivity"-->
-<!--            android:exported="false" />-->
+        </service> <!-- <activity -->
+        <!-- android:name=".notification.ReceiveNotificationActivity" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".notification.SendNotificationActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".StickerSelectionActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

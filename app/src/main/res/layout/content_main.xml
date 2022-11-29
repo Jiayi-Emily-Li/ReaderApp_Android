@@ -24,4 +24,12 @@
         android:layout_height="wrap_content"
         android:text="about" />
 
+    <Button
+        android:id="@+id/finalProjectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Final Project"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
 </LinearLayout>

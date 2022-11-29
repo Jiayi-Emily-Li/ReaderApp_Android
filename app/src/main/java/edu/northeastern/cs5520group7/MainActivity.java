@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button stickButton;
     private Button aboutButton;
+    private Button finalProjButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        finalProjButton = (Button) findViewById(R.id.finalProjectButton);
+        finalProjButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Entry.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
     }
     public void startRetrofitActivity(View view){
