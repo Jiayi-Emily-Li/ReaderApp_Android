@@ -28,6 +28,7 @@ android {
 //        }
 //    }
 
+    /*
 
     signingConfigs {
         debug {
@@ -56,7 +57,7 @@ android {
             keyAlias 'key0'
             keyPassword '13790706'
         }
-    }
+    }*/
 
 
 
@@ -73,11 +74,11 @@ android {
     }
 
     buildTypes {
-        release {
+      /*  release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-        }
+        }*/
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

@@ -6,5 +6,13 @@
     <string name="radioimge">radio</string>
     <string name="sendNotification">Notify friend</string>
     <string name="backtoHome">Back</string>
+    <string name="book_title">Book Title</string>
+    <string name="book_author">Book Author</string>
+    <string name="category">Category</string>
+    <string name="add_to_list">add List</string>
+    <string name="view_book">View</string>
+    <string name="post_review">Review</string>
+    <string name="todo">TODO</string>
+    <string name="you_may_like">You May Like</string>
 
 </resources>
