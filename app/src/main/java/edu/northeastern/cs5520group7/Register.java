@@ -25,6 +25,7 @@ public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     ProgressDialog progressDialog;
+    String userNamePattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
     @Override
@@ -54,28 +55,30 @@ public class Register extends AppCompatActivity {
         String userName = userNameInput.getText().toString();
         String password = passwordInput.getText().toString();
 
-        progressDialog.setMessage("please waiting...");
-        progressDialog.setTitle("registration");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(userName, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if (task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    sendUserToNextPage();
-                    Toast.makeText(Register.this, "Registration successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(Register.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
-
+        if (!userName.matches(userNamePattern)) {
+            userNameInput.setError("Please enter a valid email address");
+        } else if (password.isEmpty() || password.length() < 6) {
+            passwordInput.setError("Please enter a valid password(length >= 6)");
+        } else {
+            progressDialog.setMessage("please waiting...");
+            progressDialog.setTitle("registration");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+            mAuth.createUserWithEmailAndPassword(userName, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        progressDialog.dismiss();
+                        sendUserToNextPage();
+                        Toast.makeText(Register.this, "Registration successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(Register.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-            }
-        });
-
+            });
+        }
     }
 
     private void sendUserToNextPage() {

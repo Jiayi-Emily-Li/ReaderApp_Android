@@ -23,7 +23,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".SignIn"
+            android:name=".HomePage"
             android:exported="false" />
         <activity
             android:name=".Entry"

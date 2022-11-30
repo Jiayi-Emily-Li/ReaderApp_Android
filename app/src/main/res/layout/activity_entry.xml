@@ -27,7 +27,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="4dp"
-        android:hint="username"
+        android:hint="email"
         android:inputType="textNoSuggestions"
         app:layout_constraintBottom_toTopOf="@+id/signInButton"
         app:layout_constraintEnd_toEndOf="parent"
