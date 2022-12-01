@@ -24,6 +24,10 @@
         <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.5742753623188406" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5742753623188406" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.5619791666666667" />
+        <entry key="app/src/main/res/layout/fragment_post.xml" value="0.5619791666666667" />
         <entry key="app/src/main/res/layout/user_item.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.32760416666666664" />
       </map>
