@@ -14,5 +14,9 @@
     <string name="post_review">Review</string>
     <string name="todo">TODO</string>
     <string name="you_may_like">You May Like</string>
+    <string name="home">Home</string>
+    <string name="discover">Discover</string>
+    <string name="myList">MyList</string>
+    <string name="post">Post</string>
 
 </resources>
