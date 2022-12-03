@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/IV_vert"
+        android:layout_width="110dp"
+        android:layout_height="175dp"
+        android:src="@drawable/default_book_img"/>
+
+    <TextView
+        android:id="@+id/titleTV_vert"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="2"
+        android:alpha="0.9"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="top"
+        android:layout_marginRight="0dp" />
+
+    <TextView
+        android:id="@+id/authorTV_vert"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:alpha="0.7"/>
+
+    <RatingBar
+        android:id="@+id/aveRB_vert"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/noRatingTV_vert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Rating"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"/>
+
+</LinearLayout>
