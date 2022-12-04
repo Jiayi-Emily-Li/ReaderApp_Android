@@ -14,11 +14,11 @@ public interface HTTPController {
     @GET("/books/v1/volumes/{id}")
     Call<Book> getBookItem(@Path("id") String id);
 
-    @GET("/books/v1/volumes?q=categories:young+fiction&maxResults=30")
-    Call<MultiBooks> getNewReleaseBooks();
-
     @GET("/books/v1/volumes")
     Call<MultiBooks> getCategories(@Query(value = "q") String searchText, @Query("filter") String filter, @Query("orderBy") String orderBy, @Query("maxResults") int maxResults);
+
+    @GET("/books/v1/volumes")
+    Call<MultiBooks> getSearchResults(@Query(value = "q") String searchText, @Query("startIndex") int startIndex, @Query("orderBy") String orderBy, @Query("maxResults") int maxResults);
 
 }
 

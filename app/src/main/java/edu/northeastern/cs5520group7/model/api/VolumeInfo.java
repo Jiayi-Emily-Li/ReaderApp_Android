@@ -35,6 +35,18 @@ public class VolumeInfo {
     @Expose
     private Integer ratingCount;
 
+    @SerializedName("pageCount")
+    @Expose
+    private Integer pageCount;
+
+    @SerializedName("publisher")
+    @Expose
+    private String publisher;
+
+    @SerializedName("categories")
+    @Expose
+    private List<String> categories;
+
 
     public String getTitle() {
         return title;
@@ -90,5 +102,29 @@ public class VolumeInfo {
 
     public void setRatingCount(Integer ratingCount) {
         this.ratingCount = ratingCount;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
     }
 }

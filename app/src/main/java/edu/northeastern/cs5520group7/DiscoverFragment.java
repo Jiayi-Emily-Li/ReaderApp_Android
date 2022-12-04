@@ -1,10 +1,12 @@
 package edu.northeastern.cs5520group7;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.northeastern.cs5520group7.Adapter.CategoriesAdapter;
+import edu.northeastern.cs5520group7.Adapter.DiscoverAdapter;
 import edu.northeastern.cs5520group7.model.HTTPController;
 import edu.northeastern.cs5520group7.model.api.MultiBooks;
 import retrofit2.Call;
@@ -40,7 +42,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     ShimmerFrameLayout shimmer_1, shimmer_2, shimmer_3, shimmer_4;
     TextView Err_1, Err_2, Err_3, Err_4;
     RecyclerView RV_1, RV_2, RV_3, RV_4;
-    CategoriesAdapter categoriesAdapter;
+    DiscoverAdapter discoverAdapter;
     LinearLayoutManager cat1_LM, cat2_LM, cat3_LM, cat4_LM;
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -76,10 +78,29 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         swipeRefreshLayout = view.findViewById(R.id.discoverPg);
 
+        //drop-down menu
         cat_spinner = view.findViewById(R.id.cat_spinner);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_choices, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cat_spinner.setAdapter(spinnerAdapter);
+        cat_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+
+                }else{
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                Intent intent = new Intent(getContext(), DiscoverSingleCategory.class);
+                intent.putExtra("categoryName", selectedItem);
+                getContext().startActivity(intent);
+            }}
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -139,11 +160,11 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 shimmer_1.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
                     for(int i = 0; i < response.body().getBooks().size(); i++) {
-                        categoriesAdapter = new CategoriesAdapter(getContext(), response.body().getBooks());
+                        discoverAdapter = new DiscoverAdapter(getContext(), response.body().getBooks());
                         Log.d("book", response.body().getBooks().get(i).getVolumeInfo().getTitle());
                         cat1_LM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         RV_1.setLayoutManager(cat1_LM);
-                        RV_1.setAdapter(categoriesAdapter);
+                        RV_1.setAdapter(discoverAdapter);
 
                     }
                 }
@@ -171,10 +192,10 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 shimmer_2.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
                     for(int i = 0; i < response.body().getBooks().size(); i++) {
-                        categoriesAdapter = new CategoriesAdapter(getContext(), response.body().getBooks());
+                        discoverAdapter = new DiscoverAdapter(getContext(), response.body().getBooks());
                         cat2_LM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         RV_2.setLayoutManager(cat2_LM);
-                        RV_2.setAdapter(categoriesAdapter);
+                        RV_2.setAdapter(discoverAdapter);
 
                     }
                 }
@@ -202,10 +223,10 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 shimmer_3.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
                     for(int i = 0; i < response.body().getBooks().size(); i++) {
-                        categoriesAdapter = new CategoriesAdapter(getContext(), response.body().getBooks());
+                        discoverAdapter = new DiscoverAdapter(getContext(), response.body().getBooks());
                         cat3_LM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         RV_3.setLayoutManager(cat3_LM);
-                        RV_3.setAdapter(categoriesAdapter);
+                        RV_3.setAdapter(discoverAdapter);
 
                     }
                 }
@@ -232,10 +253,10 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 shimmer_4.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
                     for(int i = 0; i < response.body().getBooks().size(); i++) {
-                        categoriesAdapter = new CategoriesAdapter(getContext(), response.body().getBooks());
+                        discoverAdapter = new DiscoverAdapter(getContext(), response.body().getBooks());
                         cat4_LM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         RV_4.setLayoutManager(cat4_LM);
-                        RV_4.setAdapter(categoriesAdapter);
+                        RV_4.setAdapter(discoverAdapter);
 
                     }
                 }
@@ -251,5 +272,4 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
         });
 
     }
-
 }

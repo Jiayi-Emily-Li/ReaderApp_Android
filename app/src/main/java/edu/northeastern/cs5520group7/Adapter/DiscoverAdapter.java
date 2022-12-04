@@ -22,13 +22,13 @@ import java.util.List;
 import edu.northeastern.cs5520group7.R;
 import edu.northeastern.cs5520group7.model.api.Book;
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
+public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHolder> {
 
 
     private Context context;
     private List<Book> books;
 
-    public CategoriesAdapter(Context context, List<Book> books){
+    public DiscoverAdapter(Context context, List<Book> books){
         this.context = context;
         this.books = books;
     }
@@ -38,19 +38,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(context).inflate(R.layout.discover_book_item_vert, parent, false);
-
-       /* view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String volumeId = books.get(viewHolder.getAdapterPosition()).getId();
-
-                //send data to BookDetailPage
-                Intent intent = new Intent(v.getContext(), BookDetailPage.class);
-                intent.putExtra("volume_id", volumeId);
-                v.getContext().startActivity(intent);
-            }
-        });
-        Log.d("viewHolder", viewHolder.authorTV_vert.toString());*/
         return new ViewHolder(view);
     }
 

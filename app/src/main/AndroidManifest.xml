@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".Discovery"
+            android:name=".DiscoverSingleCategory"
             android:exported="false" />
         <activity
             android:name=".Register"

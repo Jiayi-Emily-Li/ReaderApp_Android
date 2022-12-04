@@ -41,5 +41,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="categoryname">categoryName</string>
+    <string name="newest">Newest</string>
+    <string name="relevance">Relevance</string>
+    <string name="sort_image">Sort Image</string>
 
 </resources>

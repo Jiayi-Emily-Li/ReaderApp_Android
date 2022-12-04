@@ -9,7 +9,7 @@ public class Book {
 
     @SerializedName("kind")
     @Expose
-    private String category;
+    private String kind;
 
     @SerializedName("id")
     @Expose
@@ -24,8 +24,8 @@ public class Book {
     private AccessInfo accessInfo;
 
 
-    public String getCategory() {
-        return category;
+    public String getKind() {
+        return kind;
     }
 
 
@@ -37,8 +37,8 @@ public class Book {
         return volumeInfo;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setKind(String category) {
+        this.kind = kind;
     }
 
     public void setId(String id) {
