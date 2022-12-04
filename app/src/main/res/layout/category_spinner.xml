@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:text="You may like"
+        android:text="You May like"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:alpha="0.9"

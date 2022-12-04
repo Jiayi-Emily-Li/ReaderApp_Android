@@ -15,7 +15,7 @@ public interface HTTPController {
     Call<Book> getBookItem(@Path("id") String id);
 
     @GET("/books/v1/volumes")
-    Call<MultiBooks> getCategories(@Query(value = "q") String searchText, @Query("filter") String filter, @Query("orderBy") String orderBy, @Query("maxResults") int maxResults);
+    Call<MultiBooks> getMixCategories(@Query(value = "q") String searchText, @Query("filter") String filter, @Query("orderBy") String orderBy, @Query("maxResults") int maxResults);
 
     @GET("/books/v1/volumes")
     Call<MultiBooks> getSearchResults(@Query(value = "q") String searchText, @Query("startIndex") int startIndex, @Query("orderBy") String orderBy, @Query("maxResults") int maxResults);

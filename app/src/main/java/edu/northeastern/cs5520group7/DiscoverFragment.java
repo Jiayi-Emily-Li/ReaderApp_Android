@@ -152,7 +152,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_1() {
-        cat1_Call = httpController.getCategories("category:" + cat_1,"ebooks", "relevance", 40);
+        cat1_Call = httpController.getSearchResults("category:" + cat_1,0, "relevance", 40);
         cat1_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -184,7 +184,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_2() {
-        cat2_Call = httpController.getCategories("category:"+cat_2,"ebooks", "relevance", 40);
+        cat2_Call = httpController.getSearchResults("category:"+cat_2,0, "relevance", 40);
         cat2_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -215,7 +215,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_3() {
-        cat3_Call = httpController.getCategories("category:"+cat_3,"ebooks", "relevance", 40);
+        cat3_Call = httpController.getSearchResults("category:"+cat_3,0, "relevance", 40);
         cat3_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -245,7 +245,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_4() {
-        cat4_Call = httpController.getCategories("category:"+ cat_4,"ebooks", "relevance", 40);
+        cat4_Call = httpController.getSearchResults("category:"+ cat_4,0, "relevance", 40);
         cat4_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {

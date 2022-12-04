@@ -12,8 +12,7 @@
     <ImageView
         android:id="@+id/IV_vert"
         android:layout_width="110dp"
-        android:layout_height="175dp"
-        android:src="@drawable/default_book_img"/>
+        android:layout_height="175dp"/>
 
     <TextView
         android:id="@+id/titleTV_vert"

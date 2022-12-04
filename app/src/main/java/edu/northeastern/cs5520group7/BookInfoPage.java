@@ -1,10 +1,10 @@
 package edu.northeastern.cs5520group7;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,13 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.net.URL;
 
 import edu.northeastern.cs5520group7.model.HTTPController;
 import edu.northeastern.cs5520group7.model.api.Book;
@@ -102,9 +101,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
 
                     //set book image
                     try{
-                        URL url = new URL(volumeInfo.getImageLinks().getSmallThumbnail());
-                        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                        bookIV.setImageBitmap(bmp);
+                        Glide.with(getApplicationContext()).load(volumeInfo.getImageLinks().getSmallThumbnail()).centerCrop().into(bookIV);
                     } catch (Exception e) {
                         bookIV.setImageDrawable(ContextCompat.getDrawable(BookInfoPage.this, R.drawable.default_book_img));
                     }
@@ -139,9 +136,13 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
 
                     //set description
                     try {
-                        descriptionTV.setText(volumeInfo.getDescription());
+                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            descriptionTV.setText(Html.fromHtml(volumeInfo.getDescription(), Html.FROM_HTML_MODE_COMPACT));
+                        }else {
+                            descriptionTV.setText(Html.fromHtml(volumeInfo.getDescription()));
+                        }
                     } catch (Exception e) {
-
+                        descriptionTV.setText("-");
                     }
 
                     /*---Additional Book Information---*/

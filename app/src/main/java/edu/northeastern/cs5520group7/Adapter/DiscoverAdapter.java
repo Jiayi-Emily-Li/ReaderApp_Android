@@ -3,7 +3,6 @@ package edu.northeastern.cs5520group7.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.InputStream;
-import java.net.URL;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import edu.northeastern.cs5520group7.BookInfoPage;
@@ -69,8 +68,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
         //set image -try to retrieve image through Image link
         Log.d("imagelink", book.getVolumeInfo().getImageLinks().getSmallThumbnail());
         try {
-            InputStream bookImgStream = (InputStream) new URL(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).getContent();
-            holder.iv_vert.setImageBitmap(BitmapFactory.decodeStream(bookImgStream));
+            Glide.with(context).load(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).centerCrop().into(holder.iv_vert);
         } catch (Exception exception) {
             //if retrieve failed, use default book image instead
             holder.iv_vert.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.default_book_img));
