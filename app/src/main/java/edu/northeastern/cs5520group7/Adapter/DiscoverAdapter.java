@@ -60,7 +60,11 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
         Book book = books.get(position);
 
         //set title
+        try{
         holder.titleTV_vert.setText(book.getVolumeInfo().getTitle());
+        } catch (Exception e) {
+            holder.titleTV_vert.setText("-");
+        };
 
         //set image -try to retrieve image through Image link
         Log.d("imagelink", book.getVolumeInfo().getImageLinks().getSmallThumbnail());
@@ -73,20 +77,17 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
         }
 
         //set author name - may have different amount of authors
-        Integer authorNum = book.getVolumeInfo().getAuthors().size();
-        if (authorNum == 0){
-            holder.authorTV_vert.setText("-");
-        } else {
-            StringBuilder authorNames= new StringBuilder();
+        try{
+            Integer authorNum = book.getVolumeInfo().getAuthors().size();
+            String authorNames= "";
             for (int i = 0; i < authorNum; i++){
-                    authorNames.append(book.getVolumeInfo().getAuthors().get(i));
-                    authorNames.append(" ");
-
+                    authorNames = book.getVolumeInfo().getAuthors().get(i) + " ";
+                    holder.authorTV_vert.setText("By " + authorNames.toString());
                 }
-            holder.authorTV_vert.setText("By " + authorNames.toString());
             Log.d("viewHolder", holder.authorTV_vert.toString());
-        }
-
+        } catch (Exception e) {
+                holder.authorTV_vert.setText("-");
+            }
     }
 
     @Override

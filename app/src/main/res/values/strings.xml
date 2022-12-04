@@ -20,7 +20,7 @@
     <string name="post">Post</string>
 
     <string-array name="spinner_choices">
-        <item>See more Categories</item>
+        <item>See More Categories</item>
         <item>Art</item>
         <item>Biography</item>
         <item>Business</item>

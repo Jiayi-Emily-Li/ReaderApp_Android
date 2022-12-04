@@ -13,8 +13,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.net.URL;
 
@@ -25,18 +32,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookInfoPage extends AppCompatActivity {
+public class BookInfoPage extends AppCompatActivity implements View.OnClickListener {
 
     TextView titleTV, authorTV, ratingTV, languageTV, pageCountTV;
     TextView descriptionTV, publisherTV, publishedDateTV, isbnTV, categoriesTV, maturityTV;
     ImageView bookIV;
     RatingBar ratingBar;
-    Button bookLinkBtn;
+    Button bookLinkBtn, activeBookmarkBtn, inactiveBookmarkBtn;
 
     HTTPController httpController;
     Call<Book> bookInfoCall;
-
     String bookId;
+
+    DatabaseReference readerRef;
+    String curUser;
+    Boolean checkFlagged;
 
 
     @Override
@@ -61,12 +71,14 @@ public class BookInfoPage extends AppCompatActivity {
         bookLinkBtn = findViewById(R.id.bookLink);
 
         httpController = Retrofit_Book.getAPI();
-
         bookId = getIntent().getStringExtra("bookId");
         Log.d("bookId received in Book info", bookId);
+        RetrieveBookInfo(bookId);
 
-            RetrieveBookInfo(bookId);
-
+        activeBookmarkBtn = findViewById(R.id.activeBookmark);
+        inactiveBookmarkBtn = findViewById(R.id.inactiveBookmark);
+        activeBookmarkBtn.setOnClickListener(this);
+        inactiveBookmarkBtn.setOnClickListener(this);
 
     }
 
@@ -98,10 +110,13 @@ public class BookInfoPage extends AppCompatActivity {
                     }
 
                     //setRatingbar
-                    Float rate = volumeInfo.getAverageRating();
-                    if(rate == null){
-                    } else {
+                    try {
+                        Float rate = volumeInfo.getAverageRating();
                         ratingBar.setRating(rate);
+                    }catch (Exception e) {
+
+                    }
+
                     }
 
                     //set rating count
@@ -121,6 +136,14 @@ public class BookInfoPage extends AppCompatActivity {
                     languageTV.setText(volumeInfo.getLanguage());
                     Log.d("language", volumeInfo.getLanguage());
 
+
+                    //set description
+                    try {
+                        descriptionTV.setText(volumeInfo.getDescription());
+                    } catch (Exception e) {
+
+                    }
+
                     /*---Additional Book Information---*/
                     //set publisher
                     try{
@@ -137,26 +160,27 @@ public class BookInfoPage extends AppCompatActivity {
                     }
 
                     //set ISBN
-                    Integer isbnNum = volumeInfo.getIndustryIdentifiers().size();
-                    String isbn = "";
-                    if (isbnNum != 0) {
+                    try{
+                        Integer isbnNum = volumeInfo.getIndustryIdentifiers().size();
+                        String isbn = "";
                         for (int i = 0; i < isbnNum; i++) {
                             isbn = volumeInfo.getIndustryIdentifiers().get(i).getIdentifier() + "\n";
                             isbnTV.append(isbn);
                         }
-                    } else {
-                        isbnTV.setText("-");
+                    }catch (Exception e) {
+                            isbnTV.setText("-");
                     }
 
+
                     //set Categories
-                    Integer catNum = volumeInfo.getCategories().size();
-                    String categories = "";
-                    if (catNum != 0) {
+                    try {
+                        Integer catNum = volumeInfo.getCategories().size();
+                        String categories = "";
                         for (int m = 0; m < catNum; m++) {
                             categories = volumeInfo.getCategories().get(m) + "\n";
                             categoriesTV.append(categories);
                         }
-                    }else {
+                    } catch (Exception e){
                         categoriesTV.setText("-");
                     }
 
@@ -178,7 +202,15 @@ public class BookInfoPage extends AppCompatActivity {
                             }
                         }
                     });
-                }
+
+                  /* if(checkBookList(book)){
+                        inactiveBookmarkBtn.setVisibility(View.GONE);
+                        activeBookmarkBtn.setVisibility(View.VISIBLE);
+                    } else {
+                        inactiveBookmarkBtn.setVisibility(View.VISIBLE);
+                        activeBookmarkBtn.setVisibility(View.GONE);
+                    }*/
+
             }
 
             @Override
@@ -188,5 +220,60 @@ public class BookInfoPage extends AppCompatActivity {
         });
 
 
+
     }
+
+    private boolean checkBookList(Book book) {
+        readerRef = FirebaseDatabase.getInstance().getReference("readers");
+        readerRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot readerSnapshot: snapshot.getChildren()){
+                    if (readerSnapshot.hasChild(curUser)) {
+                        if(readerSnapshot.child("curUser/book_added").hasChild(book.getVolumeInfo().getTitle())){
+                            checkFlagged = true;
+                        }else{
+                            checkFlagged = false;
+                        }
+                    }else {
+                    checkFlagged = false;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    return checkFlagged;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.activeBookmark:
+                removeBookmark();
+                break;
+
+            case R.id.inactiveBookmark:
+                addBookmark();
+                break;
+        }
+    }
+
+    private void addBookmark() {
+        inactiveBookmarkBtn.setVisibility(View.GONE);
+        activeBookmarkBtn.setVisibility(View.VISIBLE);
+
+
+    }
+
+    private void removeBookmark() {
+        activeBookmarkBtn.setVisibility(View.GONE);
+        inactiveBookmarkBtn.setVisibility(View.VISIBLE);
+
+
+    }
+
+
 }

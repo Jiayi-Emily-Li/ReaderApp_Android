@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
+    android:background="@color/colorLightBeige"
     tools:context=".BookInfoPage">
 
     <ScrollView
@@ -186,8 +187,9 @@
                     android:minHeight="0dp"
                     android:visibility="gone"
                     android:textAllCaps="false"
-                    android:text="Remove From Bookmarks"
+                    android:background="@color/colorIceBlue"
                     android:textSize="14sp"
+                    android:text="Remove From Bookmarks"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout" />
@@ -195,7 +197,7 @@
                 <Button
                     android:id="@+id/inactiveBookmark"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center"
@@ -204,6 +206,7 @@
                     android:minHeight="0dp"
                     android:text="Add To Bookmarks"
                     android:textAllCaps="false"
+                    android:background="@color/colorIceBlue"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -381,8 +384,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom|end"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -395,9 +396,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Read eBook"
+            android:background="@color/colorIceBlue"
             android:textAllCaps="false"
             android:textAlignment="center"
-            android:layout_marginRight="10dp"
             android:padding="10dp"
             android:clickable="true"
             android:focusable="true"

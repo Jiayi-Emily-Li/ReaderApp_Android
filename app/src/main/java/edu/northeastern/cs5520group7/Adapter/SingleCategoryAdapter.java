@@ -61,7 +61,11 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
         Book book = books.get(position);
 
         //set book title
-        holder.sCatBookTitle.setText(book.getVolumeInfo().getTitle());
+        try{
+            holder.sCatBookTitle.setText(book.getVolumeInfo().getTitle());
+        } catch (Exception e) {
+            holder.sCatBookTitle.setText("-");
+        };
 
         //set book image
         try {
@@ -73,16 +77,16 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
         }
 
         //set author
-        Integer authorNum = book.getVolumeInfo().getAuthors().size();
-        if (authorNum == 0){
-            holder.sCatBookAuthor.setText("-");
-        } else {
+        try{
+            Integer authorNum = book.getVolumeInfo().getAuthors().size();
             StringBuilder authorNames= new StringBuilder();
             for (int i = 0; i < authorNum; i++){
                 authorNames.append(book.getVolumeInfo().getAuthors().get(i));
                 authorNames.append(" ");
             }
             holder.sCatBookAuthor.setText("By " + authorNames);
+        } catch (Exception e) {
+                holder.sCatBookAuthor.setText("-");
         }
 
         //set book page count
@@ -94,11 +98,11 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
 
 
         //setRatingbar
-        Float rate = book.getVolumeInfo().getAverageRating();
-        if(rate == null){
-        } else {
-            holder.sCatBookRating.setRating(rate);
-        }
+        try{
+            holder.sCatBookRating.setRating(book.getVolumeInfo().getAverageRating());
+        } catch (Exception e){
+        };
+
     }
 
     @Override
