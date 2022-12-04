@@ -2,7 +2,9 @@ package edu.northeastern.cs5520group7.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import edu.northeastern.cs5520group7.BookInfoPage;
 import edu.northeastern.cs5520group7.R;
 import edu.northeastern.cs5520group7.model.api.Book;
 
@@ -37,7 +40,20 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(context).inflate(R.layout.discover_book_item_hor, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
+
+        //while single book is clicked, send bookId to start a new activity to show the book information
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String bookId = books.get(viewHolder.getAdapterPosition()).getId();
+                Log.d("bookId", bookId);
+                Intent intent = new Intent(view.getContext(), BookInfoPage.class);
+                intent.putExtra("bookId", bookId);
+                view.getContext().startActivity(intent);
+            }
+        });
+        return viewHolder;
     }
 
     @Override
@@ -66,12 +82,16 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
                 authorNames.append(book.getVolumeInfo().getAuthors().get(i));
                 authorNames.append(" ");
             }
-            holder.sCatBookAuthor.setText("By " + authorNames.toString());
+            holder.sCatBookAuthor.setText("By " + authorNames);
         }
 
-        //set category
+        //set book page count
+         try{
+            holder.sCatBookPgCt.setText("Pages: " + String.valueOf(book.getVolumeInfo().getPageCount()));
+         } catch (Exception e) {
+             holder.sCatBookPgCt.setText("-");
+         }
 
-        holder.sCatBookPgCt.setText("Pages: " + book.getVolumeInfo().getPageCount().toString());
 
         //setRatingbar
         Float rate = book.getVolumeInfo().getAverageRating();

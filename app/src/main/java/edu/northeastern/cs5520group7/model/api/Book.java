@@ -19,10 +19,6 @@ public class Book {
     @Expose
     private VolumeInfo volumeInfo;
 
-    @SerializedName("accessInfo")
-    @Expose
-    private AccessInfo accessInfo;
-
 
     public String getKind() {
         return kind;
@@ -49,11 +45,4 @@ public class Book {
         this.volumeInfo = volumeInfo;
     }
 
-    public AccessInfo getAccessInfo() {
-        return accessInfo;
-    }
-
-    public void setAccessInfo(AccessInfo accessInfo) {
-        this.accessInfo = accessInfo;
-    }
 }

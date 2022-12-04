@@ -43,9 +43,29 @@ public class VolumeInfo {
     @Expose
     private String publisher;
 
+    @SerializedName("publishedDate")
+    @Expose
+    private String publishedDate;
+
     @SerializedName("categories")
     @Expose
     private List<String> categories;
+
+    @SerializedName("maturityRating")
+    @Expose
+    private String maturityRating;
+
+    @SerializedName("previewLink")
+    @Expose
+    private String previewLink;
+
+    @SerializedName("ratingsCount")
+    @Expose
+    private Integer ratingsCount;
+
+    @SerializedName("industryIdentifiers")
+    @Expose
+    private List<IndustryIdentifier> industryIdentifiers = null;
 
 
     public String getTitle() {
@@ -126,5 +146,45 @@ public class VolumeInfo {
 
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public String getMaturityRating() {
+        return maturityRating;
+    }
+
+    public void setMaturityRating(String maturityRating) {
+        this.maturityRating = maturityRating;
+    }
+
+    public String getPreviewLink() {
+        return previewLink;
+    }
+
+    public void setPreviewLink(String previewLink) {
+        this.previewLink = previewLink;
+    }
+
+    public Integer getRatingsCount() {
+        return ratingsCount;
+    }
+
+    public void setRatingsCount(Integer ratingsCount) {
+        this.ratingsCount = ratingsCount;
+    }
+
+    public List<IndustryIdentifier> getIndustryIdentifiers() {
+        return industryIdentifiers;
+    }
+
+    public void setIndustryIdentifiers(List<IndustryIdentifier> industryIdentifiers) {
+        this.industryIdentifiers = industryIdentifiers;
     }
 }

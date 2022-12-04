@@ -2,6 +2,7 @@ package edu.northeastern.cs5520group7.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import edu.northeastern.cs5520group7.BookInfoPage;
 import edu.northeastern.cs5520group7.R;
 import edu.northeastern.cs5520group7.model.api.Book;
 
@@ -38,7 +40,19 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(context).inflate(R.layout.discover_book_item_vert, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //while single book get selected, sent bookId to single book info page
+                String bookId = books.get(viewHolder.getAdapterPosition()).getId();
+                Intent intent = new Intent(view.getContext(), BookInfoPage.class);
+                intent.putExtra("bookId", bookId);
+                view.getContext().startActivity(intent);
+            }
+        });
+        return viewHolder;
     }
 
     @Override
@@ -72,8 +86,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
             holder.authorTV_vert.setText("By " + authorNames.toString());
             Log.d("viewHolder", holder.authorTV_vert.toString());
         }
-
-
 
     }
 
