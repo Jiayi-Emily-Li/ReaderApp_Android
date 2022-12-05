@@ -78,7 +78,7 @@ public class DiscoverSingleCategory extends AppCompatActivity implements View.On
     }
 
     private void callSingleCategoryBooks(String sortBy, int maxResults) {
-        sCatBooksCall = httpController.getSearchResults(category, 0, sortBy, maxResults);
+        sCatBooksCall = httpController.getCategoryResults("categories:" +category, "ebooks", sortBy, maxResults);
         Log.d("category", category);
         sCatBooksCall.enqueue(new Callback<MultiBooks>() {
             @Override

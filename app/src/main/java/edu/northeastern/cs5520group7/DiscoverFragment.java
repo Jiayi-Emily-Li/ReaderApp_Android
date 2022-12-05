@@ -87,12 +87,19 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-
                 }else{
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                Intent intent = new Intent(getContext(), DiscoverSingleCategory.class);
-                intent.putExtra("categoryName", selectedItem);
-                getContext().startActivity(intent);
+                    String selectedItem = parent.getItemAtPosition(position).toString();
+                    if (selectedItem == "Biography"){selectedItem = "biography&autobiography";}
+                    else if(selectedItem == "Business"){selectedItem = "investing+business";}
+                    else if(selectedItem == "Children"){selectedItem = "childrens";}
+                    else if (selectedItem == "Comics"){selectedItem = "comics&graphic novels";}
+                    else if (selectedItem == "Fantasy"){selectedItem = "fiction+fantasy";}
+                    else if (selectedItem == "Fiction"){selectedItem = "young+fiction";}
+                    else if (selectedItem == "Thriller"){selectedItem = "thriller+horror+suspense";}
+                    else if (selectedItem == "Travel"){selectedItem = "travel+travelling";}
+                    Intent intent = new Intent(getContext(), DiscoverSingleCategory.class);
+                    intent.putExtra("categoryName", selectedItem);
+                    getContext().startActivity(intent);
             }}
 
 
@@ -105,9 +112,9 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
 
         //default recommend result for new users or users without book list
-        cat_1 = "fiction";
+        cat_1 = "young+fiction";
         cat_2 = "romance";
-        cat_3 = "thriller+horror";
+        cat_3 = "thriller+horror+suspense";
         cat_4 = "childrens";
         readerFavCat = new ArrayList<>(Arrays.asList(cat_1, cat_2, cat_3, cat_4));
 
@@ -152,7 +159,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_1() {
-        cat1_Call = httpController.getSearchResults("category:" + cat_1,0, "relevance", 40);
+        cat1_Call = httpController.getCategoryResults("categories:" + cat_1,"ebooks", "relevance", 40);
         cat1_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -184,7 +191,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_2() {
-        cat2_Call = httpController.getSearchResults("category:"+cat_2,0, "relevance", 40);
+        cat2_Call = httpController.getCategoryResults("categories:" + cat_2,"ebooks", "relevance", 40);
         cat2_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -215,7 +222,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_3() {
-        cat3_Call = httpController.getSearchResults("category:"+cat_3,0, "relevance", 40);
+        cat3_Call = httpController.getCategoryResults("categories:" + cat_3,"ebooks", "relevance", 40);
         cat3_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
@@ -245,7 +252,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void callRecommend_4() {
-        cat4_Call = httpController.getSearchResults("category:"+ cat_4,0, "relevance", 40);
+        cat4_Call = httpController.getCategoryResults("categories:"+ cat_4,"ebooks", "relevance", 40);
         cat4_Call.enqueue(new Callback<MultiBooks>() {
             @Override
             public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
