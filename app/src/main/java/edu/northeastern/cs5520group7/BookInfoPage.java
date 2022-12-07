@@ -139,6 +139,19 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                         bookIV.setImageDrawable(ContextCompat.getDrawable(BookInfoPage.this, R.drawable.default_book_img));
                     }
 
+                    //setAuthor
+                    try{
+                        Integer authorNum = book.getVolumeInfo().getAuthors().size();
+                        StringBuilder authorNames= new StringBuilder();
+                        for (int i = 0; i < authorNum; i++){
+                            authorNames.append(book.getVolumeInfo().getAuthors().get(i));
+                            authorNames.append(" ");
+                        }
+                        authorTV.setText(authorNames);
+                    } catch (Exception e) {
+                        authorTV.setText("-");
+                    }
+
                     //setRatingbar
                     try {
                         Float rate = volumeInfo.getAverageRating();
@@ -251,7 +264,6 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         readerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                checkStatus = false;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Log.d("dataSnapshot", dataSnapshot.toString());
                     if (dataSnapshot.getValue().equals(curUid)) {
@@ -295,7 +307,9 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                 addBookmark();
                 break;
         }
+
     }
+
 
     private void addBookmark() {
         inactiveBookmarkBtn.setVisibility(View.GONE);
@@ -306,14 +320,12 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         curReaderCurBookRef.child("rating").setValue(String.valueOf(ratingBar.getRating()));
         curReaderCurBookRef.child("category").setValue(categoriesTV.getText().toString());
         curReaderCurBookRef.child("reviews").setValue(reviews);
-        checkStatus = true;
     }
 
     private void removeBookmark() {
         activeBookmarkBtn.setVisibility(View.GONE);
         inactiveBookmarkBtn.setVisibility(View.VISIBLE);
         curReaderCurBookRef.removeValue();
-        checkStatus = false;
     }
 
 
