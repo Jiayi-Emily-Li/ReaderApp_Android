@@ -18,11 +18,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.northeastern.cs5520group7.model.HTTPController;
 import edu.northeastern.cs5520group7.model.api.Book;
@@ -38,14 +43,18 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     ImageView bookIV;
     RatingBar ratingBar;
     Button bookLinkBtn, activeBookmarkBtn, inactiveBookmarkBtn;
+    FirebaseUser FBUser;
 
     HTTPController httpController;
     Call<Book> bookInfoCall;
     String bookId;
 
     DatabaseReference readerRef;
-    String curUser;
-    Boolean checkFlagged;
+    DatabaseReference curReaderCurBookRef;
+    String curUid;
+    Boolean checkStatus;
+    Boolean checkUser;
+    Map<String, String> reviews;
 
 
     @Override
@@ -69,17 +78,41 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         maturityTV = findViewById(R.id.maturityRatingTV);
         bookLinkBtn = findViewById(R.id.bookLink);
 
+        //retrieve book information
         httpController = Retrofit_Book.getAPI();
         bookId = getIntent().getStringExtra("bookId");
         Log.d("bookId received in Book info", bookId);
         RetrieveBookInfo(bookId);
 
+
+        //set the bookmark
         activeBookmarkBtn = findViewById(R.id.activeBookmark);
         inactiveBookmarkBtn = findViewById(R.id.inactiveBookmark);
+
+        FBUser = FirebaseAuth.getInstance().getCurrentUser();
+        curUid = FBUser.getUid();
+
+        //get ref from DB
+        readerRef = FirebaseDatabase.getInstance().getReference("readers");
+        curReaderCurBookRef = FirebaseDatabase.getInstance().getReference("readers/"+curUid+"/book_added/"+bookId);
+
+        reviews = new HashMap<>();
+
+
+        checkUserBookList(bookId);
+        if(!checkStatus){
+            activeBookmarkBtn.setVisibility(View.GONE);
+            inactiveBookmarkBtn.setVisibility(View.VISIBLE);
+        } else {
+            activeBookmarkBtn.setVisibility(View.VISIBLE);
+            inactiveBookmarkBtn.setVisibility(View.GONE);
+        }
+        Log.d("checkTF", checkStatus.toString());
         activeBookmarkBtn.setOnClickListener(this);
         inactiveBookmarkBtn.setOnClickListener(this);
-
     }
+
+
 
     private void RetrieveBookInfo(String id){
         Log.d("bookId request", id);
@@ -203,15 +236,6 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                     });
-
-                  /* if(checkBookList(book)){
-                        inactiveBookmarkBtn.setVisibility(View.GONE);
-                        activeBookmarkBtn.setVisibility(View.VISIBLE);
-                    } else {
-                        inactiveBookmarkBtn.setVisibility(View.VISIBLE);
-                        activeBookmarkBtn.setVisibility(View.GONE);
-                    }*/
-
             }
 
             @Override
@@ -219,34 +243,45 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                 //do nothing
             }
         });
-
-
-
     }
 
-    private boolean checkBookList(Book book) {
-        readerRef = FirebaseDatabase.getInstance().getReference("readers");
+    private void checkUserBookList(String bookId) {
+        checkStatus = false;
+        checkUser = false;
         readerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot readerSnapshot: snapshot.getChildren()){
-                    if (readerSnapshot.hasChild(curUser)) {
-                        if(readerSnapshot.child("curUser/book_added").hasChild(book.getVolumeInfo().getTitle())){
-                            checkFlagged = true;
-                        }else{
-                            checkFlagged = false;
+                checkStatus = false;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Log.d("dataSnapshot", dataSnapshot.toString());
+                    if (dataSnapshot.getValue().equals(curUid)) {
+                        checkUser = true;
+                        if (dataSnapshot.child("book_added").hasChild(bookId)) {
+                            Log.d("2", "bookAddedList");
+                            checkStatus = true;
                         }
-                    }else {
-                    checkFlagged = false;
+                    }
+
+                    if(dataSnapshot.child("book_added").getKey().equals(bookId)){
+                        int count = 0;
+                        for(DataSnapshot reviewSnapshot: dataSnapshot.child("book_add/"+bookId+"/reviews").getChildren()) {
+                            String review = reviewSnapshot.getValue(String.class);
+                            reviews.put(String.valueOf(count), review);
+                            count++;
+                        }
                     }
                 }
-            }
+                if(!checkUser){
+                    readerRef.child(curUid).child("email").setValue(FBUser.getEmail());
+                    checkUser = true;
+                }
+            };
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("Error", error.toString());
             }
         });
-    return checkFlagged;
     }
 
     @Override
@@ -265,16 +300,22 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     private void addBookmark() {
         inactiveBookmarkBtn.setVisibility(View.GONE);
         activeBookmarkBtn.setVisibility(View.VISIBLE);
-
-
+        curReaderCurBookRef.child("author").setValue(authorTV.getText().toString());
+        curReaderCurBookRef.child("bookId").setValue(bookId);
+        curReaderCurBookRef.child("bookname").setValue(titleTV.getText().toString());
+        curReaderCurBookRef.child("rating").setValue(String.valueOf(ratingBar.getRating()));
+        curReaderCurBookRef.child("category").setValue(categoriesTV.getText().toString());
+        curReaderCurBookRef.child("reviews").setValue(reviews);
+        checkStatus = true;
     }
 
     private void removeBookmark() {
         activeBookmarkBtn.setVisibility(View.GONE);
         inactiveBookmarkBtn.setVisibility(View.VISIBLE);
-
-
+        curReaderCurBookRef.removeValue();
+        checkStatus = false;
     }
+
 
 
 }
