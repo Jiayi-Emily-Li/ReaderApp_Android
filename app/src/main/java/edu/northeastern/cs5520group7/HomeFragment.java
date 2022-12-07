@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
 
         TextView cr = popupView.findViewById(R.id.currentReader);
         userNameText = HomePage.userNameText;
-        cr.setText("Current reader: " + userNameText);
+        cr.setText("Current reader: \n" + userNameText);
 
 
 
