@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3175" />
         <entry key="app/src/main/res/drawable/rounded_corners_btn.xml" value="0.34" />
         <entry key="app/src/main/res/layout/activity_about.xml" value="0.5529891304347826" />
+        <entry key="app/src/main/res/layout/activity_book_info_page.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/activity_discovery.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/activity_entry.xml" value="0.5529891304347826" />
         <entry key="app/src/main/res/layout/activity_history.xml" value="0.32864583333333336" />
@@ -22,13 +23,19 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.5529891304347826" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.5529891304347826" />
         <entry key="app/src/main/res/layout/activity_stick.xml" value="0.32864583333333336" />
+        <entry key="app/src/main/res/layout/activity_sticker_selection.xml" value="0.5760416666666667" />
         <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/layout/books_bar.xml" value="0.3223958333333333" />
+        <entry key="app/src/main/res/layout/category_spinner.xml" value="0.5760416666666667" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.30885416666666665" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.5742753623188406" />
+        <entry key="app/src/main/res/layout/discover_book_item_hor.xml" value="0.5760416666666667" />
+        <entry key="app/src/main/res/layout/discover_book_item_vert.xml" value="0.5760416666666667" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.3979020713032156" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3652894614399343" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.5619791666666667" />
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.5619791666666667" />
+        <entry key="app/src/main/res/layout/pop_window.xml" value="0.3375808715820312" />
         <entry key="app/src/main/res/layout/user_item.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.32760416666666664" />
       </map>

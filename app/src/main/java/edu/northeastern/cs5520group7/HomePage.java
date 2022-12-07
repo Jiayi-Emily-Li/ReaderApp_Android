@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,14 +17,19 @@ public class HomePage extends AppCompatActivity {
 
     private FirebaseUser user;
     ActivityHomePageBinding binding;
+    public static String userNameText;
+    public static FirebaseUser currentUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityHomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        Intent intent = getIntent();
+        userNameText = intent.getStringExtra("userName");
         user = FirebaseAuth.getInstance().getCurrentUser();
+        currentUser = intent.getParcelableExtra("currentUser");
 
         replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
