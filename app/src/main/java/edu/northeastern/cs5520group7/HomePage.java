@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -61,6 +63,32 @@ public class HomePage extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomePage.this);
+        builder.setCancelable(true);
+        builder.setTitle("ALERT");
+        builder.setMessage("Are you sure to quit?");
+
+        builder.setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                HomePage.super.onBackPressed();
+                Intent intent = new Intent(HomePage.this, Entry.class);
+                startActivity(intent);
+            }
+        });
+
+        builder.setPositiveButton("Stay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
 
     }
 
