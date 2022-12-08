@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,8 +53,6 @@ public class HomePage extends AppCompatActivity {
             }
 
 
-
-
             return true;
         });
     }
@@ -68,18 +67,20 @@ public class HomePage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        Intent intent = getIntent();
+        userNameText = intent.getStringExtra("userName");
         AlertDialog.Builder builder = new AlertDialog.Builder(HomePage.this);
         builder.setCancelable(true);
-        builder.setTitle("ALERT");
-        builder.setMessage("Are you sure to quit?");
+        builder.setTitle("Hi, " + userNameText);
+        builder.setMessage("Are you sure to quit Readers?");
 
         builder.setNegativeButton("Quit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                HomePage.super.onBackPressed();
+                Toast.makeText(HomePage.this, "See you next time :)", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(HomePage.this, Entry.class);
                 startActivity(intent);
+
             }
         });
 
