@@ -23,7 +23,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="10dp">
 
@@ -36,27 +36,17 @@
                 android:layout_marginBottom="8dp">
             </TextView>
 
-            <RatingBar
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@android:style/Widget.Holo.Light.RatingBar.Small"
-                android:scaleX=".5"
-                android:scaleY=".5"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
-                android:isIndicator="true"
-                android:stepSize="0.5"
-                android:numStars="5"
-                android:id="@+id/review_RB">
-            </RatingBar>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
+                android:ellipsize="end"
+                android:maxLines="100"
+                android:singleLine="false"
                 android:text="@string/review"
-                android:textStyle="bold"
-                android:id="@+id/reviewTV">
+                android:id="@+id/reviewTV"
+                android:layout_marginBottom="10dp">
             </TextView>
 
 

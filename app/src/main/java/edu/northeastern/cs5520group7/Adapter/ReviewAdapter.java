@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +35,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ReviewAdapter.ViewHolder holder, int position) {
         Review review = reviewList.get(position);
         holder.reviewTV.setText(review.getReview());
-        holder.reviewRB.setRating(Float.parseFloat(review.getRating()));
         holder.commenter.setText(review.getCommenter());
 
     }
@@ -49,13 +47,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView reviewTV, commenter;
-        RatingBar reviewRB;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             reviewTV = itemView.findViewById(R.id.reviewTV);
             commenter = itemView.findViewById(R.id.review_user);
-            reviewRB = itemView.findViewById(R.id.review_RB);
         }
     }
 }

@@ -5,7 +5,7 @@ plugins {
 
 android {
 
-
+/*
     signingConfigs {
         debug {
             storeFile file('/Users/jiayili/Documents/JLKeystore')
@@ -27,8 +27,6 @@ android {
             storeFile file('/Users/jiayili/Documents/JLKeystore')
         }
     }
-
-    /*
 
     signingConfigs {
         debug {
@@ -74,11 +72,11 @@ android {
     }
 
     buildTypes {
-        release {
+       /* release {
             signingConfig signingConfigs.release
         }
 
-        /*  release {
+        release {
               minifyEnabled false
               proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
               signingConfig signingConfigs.release

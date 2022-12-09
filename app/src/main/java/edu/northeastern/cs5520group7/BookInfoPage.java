@@ -56,6 +56,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     DatabaseReference readerRef;
     DatabaseReference curReaderCurBookRef;
     DatabaseReference curBookReviewRef;
+
     String curUid;
     Boolean checkUser;
     ReviewAdapter reviewAdapter;
@@ -279,6 +280,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                             inactiveBookmarkBtn.setVisibility(View.VISIBLE);
                         }
                     }
+
                 }
                 if(!checkUser){
                     readerRef.child(curUid).child("email").setValue(FBUser.getEmail());
@@ -294,6 +296,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     }
 
     private void displayReviews(String bookId){
+
         curBookReviewRef = FirebaseDatabase.getInstance().getReference("reviews/"+ bookId);
         curBookReviewRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -307,10 +310,8 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                 reviewAdapter = new ReviewAdapter(BookInfoPage.this, reviewList);
                 recyclerView.setAdapter(reviewAdapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

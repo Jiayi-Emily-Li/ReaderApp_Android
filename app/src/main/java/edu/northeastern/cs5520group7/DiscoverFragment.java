@@ -50,6 +50,8 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     String cat_1, cat_2, cat_3, cat_4;
 
 
+
+
     public DiscoverFragment() {
         // Required empty public constructor
     }
