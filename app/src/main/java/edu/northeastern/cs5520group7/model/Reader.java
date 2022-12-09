@@ -1,5 +1,7 @@
 package edu.northeastern.cs5520group7.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class Reader {
@@ -19,8 +21,8 @@ public class Reader {
         this.email = email;
         this.password = password;
         this.discovery = discovery;
-        this.list = new List<Book>();
-        this.posts = new Map<String, Post>();
+        this.list = new ArrayList<>();
+        this.posts = new HashMap<>();
     }
 
     //a reader that doesn't have posts
@@ -29,7 +31,7 @@ public class Reader {
         this.password = password;
         this.discovery = discovery;
         this.list = list;
-        this.posts = new Map<String, Post>();
+        this.posts = new HashMap<>();
     }
 
     public Reader(String email, String password, List<Book>list, List<Book> discovery, Map<String, Post> posts){
