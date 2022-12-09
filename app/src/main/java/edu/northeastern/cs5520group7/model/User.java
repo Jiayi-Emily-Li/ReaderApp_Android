@@ -1,15 +1,14 @@
 package edu.northeastern.cs5520group7.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    private String userId;
-    private String name;
-    private String token;
+    String userId;
+    String name;
+    String token;
 
-    private Map<String, History> histories;
+    Map<String, History> histories;
 
 
     public User() {
