@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
+
     tools:context=".Register">
 
     <TextView
@@ -11,8 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
+        android:fontFamily="cursive"
         android:text="Readers"
-        android:textSize="30sp"
+        android:textColor="#322F2F"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -21,23 +25,23 @@
 
     <EditText
         android:id="@+id/userNameInput"
-        android:layout_width="226dp"
-        android:layout_height="48dp"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="25dp"
         android:hint="email"
         android:inputType="textNoSuggestions"
         app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/head" />
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="226dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="39dp"
         android:hint="password"
         android:inputType="textPassword"
@@ -50,9 +54,12 @@
         android:id="@+id/registerNewUserButton"
         android:layout_width="287dp"
         android:layout_height="48dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="325dp"
+        android:background="#A7C1A8"
+        android:fontFamily="serif"
         android:text="register as a new user"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
