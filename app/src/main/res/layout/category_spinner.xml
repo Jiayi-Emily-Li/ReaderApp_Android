@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textview9"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:text="You May like"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:alpha="0.9"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/cat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        android:background="@color/colorIceBlue"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+
+</LinearLayout>

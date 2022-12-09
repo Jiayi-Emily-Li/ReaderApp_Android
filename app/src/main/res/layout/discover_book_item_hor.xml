@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="10dp"
+    android:id="@+id/sCategory_layout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightBeige">
+
+        <ImageView
+            android:id="@+id/singleCatBookImg"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/default_book_img"/>
+
+        <TextView
+            android:id="@+id/singleCatBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="40dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@+id/singleCatBookImg"
+            card_view:layout_constraintTop_toTopOf="@+id/singleCatBookImg"
+            android:text="@string/book_title" />
+
+            <TextView
+                android:id="@+id/singleCatBookAuthor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="5dp"
+                android:maxLines="2"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/singleCatBookTitle"
+                card_view:layout_constraintTop_toBottomOf="@+id/singleCatBookTitle"
+                android:text="@string/book_author" />
+
+            <TextView
+                android:id="@+id/singleCatBookPgCt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="@+id/singleCatBookAuthor"
+                card_view:layout_constraintTop_toBottomOf="@+id/singleCatBookAuthor"
+                android:text="PageCount" />
+
+            <RatingBar
+                android:id="@+id/singleCatBookRating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:scaleX="1"
+                android:scaleY="1"
+                card_view:layout_constraintStart_toStartOf="@+id/singleCatBookPgCt"
+                card_view:layout_constraintTop_toBottomOf="@+id/singleCatBookPgCt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

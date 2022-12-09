@@ -18,7 +18,32 @@
     <string name="discover">Discover</string>
     <string name="myList">MyList</string>
     <string name="post">Post</string>
+
+    <string-array name="spinner_choices">
+        <item>See More Categories</item>
+        <item>Art</item>
+        <item>Biography</item>
+        <item>Business</item>
+        <item>Children</item>
+        <item>Comics</item>
+        <item>Cooking</item>
+        <item>Fantasy</item>
+        <item>Fiction</item>
+        <item>History</item>
+        <item>Horror</item>
+        <item>Music</item>
+        <item>Religion</item>
+        <item>Romance</item>
+        <item>Science</item>
+        <item>Thriller</item>
+        <item>Travel</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="categoryname">categoryName</string>
+    <string name="newest">Newest</string>
+    <string name="relevance">Relevance</string>
+    <string name="sort_image">Sort Image</string>
 
 </resources>
