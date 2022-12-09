@@ -34,7 +34,7 @@ import java.util.List;
 import edu.northeastern.cs5520group7.Adapter.ReviewAdapter;
 import edu.northeastern.cs5520group7.model.HTTPController;
 import edu.northeastern.cs5520group7.model.Review;
-import edu.northeastern.cs5520group7.model.api.Book;
+import edu.northeastern.cs5520group7.model.api.Item;
 import edu.northeastern.cs5520group7.model.api.VolumeInfo;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +50,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     FirebaseUser FBUser;
 
     HTTPController httpController;
-    Call<Book> bookInfoCall;
+    Call<Item> bookInfoCall;
     String bookId;
 
     DatabaseReference readerRef;
@@ -121,10 +121,10 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     private void RetrieveBookInfo(String id){
         Log.d("bookId request", id);
         bookInfoCall = httpController.getBookItem(id);
-        bookInfoCall.enqueue(new Callback<Book>() {
+        bookInfoCall.enqueue(new Callback<Item>() {
             @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
-                Book book = response.body();
+            public void onResponse(Call<Item> call, Response<Item> response) {
+                Item book = response.body();
                 VolumeInfo volumeInfo = response.body().getVolumeInfo();
                 if (response.isSuccessful()) {
 
@@ -256,7 +256,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onFailure(Call<Book> call, Throwable t) {
+            public void onFailure(Call<Item> call, Throwable t) {
                 //do nothing
             }
         });

@@ -24,7 +24,7 @@ import java.util.List;
 
 import edu.northeastern.cs5520group7.Adapter.DiscoverAdapter;
 import edu.northeastern.cs5520group7.model.HTTPController;
-import edu.northeastern.cs5520group7.model.api.MultiBooks;
+import edu.northeastern.cs5520group7.model.api.Items;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +35,7 @@ import retrofit2.Response;
 public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     HTTPController httpController;
-    Call<MultiBooks> cat1_Call, cat2_Call, cat3_Call, cat4_Call;
+    Call<Items> cat1_Call, cat2_Call, cat3_Call, cat4_Call;
 
     Spinner cat_spinner;
     List<String> categories;
@@ -162,9 +162,9 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void callRecommend_1() {
         cat1_Call = httpController.getCategoryResults("categories:" + cat_1,"ebooks", "relevance", 40);
-        cat1_Call.enqueue(new Callback<MultiBooks>() {
+        cat1_Call.enqueue(new Callback<Items>() {
             @Override
-            public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
+            public void onResponse(Call<Items> call, Response<Items> response) {
                 RV_1.setVisibility(View.VISIBLE);
                 shimmer_1.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
@@ -180,7 +180,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
             }
 
             @Override
-            public void onFailure(Call<MultiBooks> call, Throwable t) {
+            public void onFailure(Call<Items> call, Throwable t) {
                 RV_1.setVisibility(View.GONE);
                 shimmer_1.setVisibility(View.GONE);
                 Err_1.setVisibility(View.VISIBLE);
@@ -194,9 +194,9 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void callRecommend_2() {
         cat2_Call = httpController.getCategoryResults("categories:" + cat_2,"ebooks", "relevance", 40);
-        cat2_Call.enqueue(new Callback<MultiBooks>() {
+        cat2_Call.enqueue(new Callback<Items>() {
             @Override
-            public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
+            public void onResponse(Call<Items> call, Response<Items> response) {
                 RV_2.setVisibility(View.VISIBLE);
                 shimmer_2.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
@@ -211,7 +211,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
             }
 
             @Override
-            public void onFailure(Call<MultiBooks> call, Throwable t) {
+            public void onFailure(Call<Items> call, Throwable t) {
                 RV_2.setVisibility(View.GONE);
                 shimmer_2.setVisibility(View.GONE);
                 Err_2.setVisibility(View.VISIBLE);
@@ -225,9 +225,9 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void callRecommend_3() {
         cat3_Call = httpController.getCategoryResults("categories:" + cat_3,"ebooks", "relevance", 40);
-        cat3_Call.enqueue(new Callback<MultiBooks>() {
+        cat3_Call.enqueue(new Callback<Items>() {
             @Override
-            public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
+            public void onResponse(Call<Items> call, Response<Items> response) {
                 RV_3.setVisibility(View.VISIBLE);
                 shimmer_3.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
@@ -242,7 +242,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
             }
 
             @Override
-            public void onFailure(Call<MultiBooks> call, Throwable t) {
+            public void onFailure(Call<Items> call, Throwable t) {
                 RV_3.setVisibility(View.GONE);
                 shimmer_3.setVisibility(View.GONE);
                 Err_3.setVisibility(View.VISIBLE);
@@ -255,9 +255,9 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void callRecommend_4() {
         cat4_Call = httpController.getCategoryResults("categories:"+ cat_4,"ebooks", "relevance", 40);
-        cat4_Call.enqueue(new Callback<MultiBooks>() {
+        cat4_Call.enqueue(new Callback<Items>() {
             @Override
-            public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
+            public void onResponse(Call<Items> call, Response<Items> response) {
                 RV_4.setVisibility(View.VISIBLE);
                 shimmer_4.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
@@ -272,7 +272,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
             }
 
             @Override
-            public void onFailure(Call<MultiBooks> call, Throwable t) {
+            public void onFailure(Call<Items> call, Throwable t) {
                 RV_4.setVisibility(View.GONE);
                 shimmer_4.setVisibility(View.GONE);
                 Err_4.setVisibility(View.VISIBLE);
