@@ -45,5 +45,11 @@
     <string name="newest">Newest</string>
     <string name="relevance">Relevance</string>
     <string name="sort_image">Sort Image</string>
+    <string name="review">review</string>
+    <string name="username">userName</string>
+    <string name="add_to_bookmarks">Add To Bookmarks</string>
+    <string name="read_ebook">Read eBook</string>
+    <string name="maturity_rating">Maturity Rating</string>
+    <string name="commenterimg">commenterImg</string>
 
 </resources>

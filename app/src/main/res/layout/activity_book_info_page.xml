@@ -77,7 +77,8 @@
                         android:scaleType="centerCrop"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/printTypeTV2"/>
+                        app:layout_constraintTop_toBottomOf="@+id/printTypeTV2"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/titleTV"
@@ -143,7 +144,7 @@
                                 android:contentDescription="pageCount icon"
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/book_icon"/>
+                                android:src="@drawable/ic_baseline_menu_book_24"/>
 
                             <TextView
                                 android:id="@+id/pageCountTV"
@@ -176,6 +177,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                 <Button
                     android:id="@+id/activeBookmark"
                     android:layout_width="0dp"
@@ -189,6 +191,7 @@
                     android:textAllCaps="false"
                     android:background="@color/colorIceBlue"
                     android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_baseline_bookmark_remove_24"
                     android:text="Remove From Bookmarks"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -204,7 +207,9 @@
                     android:minWidth="0dp"
                     android:visibility="visible"
                     android:minHeight="0dp"
-                    android:text="Add To Bookmarks"
+                    android:drawableLeft="@drawable/ic_baseline_bookmark_add_24"
+                    android:paddingStart="5dp"
+                    android:text="@string/add_to_bookmarks"
                     android:textAllCaps="false"
                     android:background="@color/colorIceBlue"
                     android:textSize="14sp"
@@ -327,7 +332,7 @@
                     android:id="@+id/categoriesTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -340,7 +345,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="Maturity Rating"
+                    android:text="@string/maturity_rating"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/categoriesTV" />
 
@@ -348,7 +353,7 @@
                     android:id="@+id/maturityRatingTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:alpha="0.9"
                     android:textSize="14sp"
@@ -373,8 +378,18 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                android:id="@+id/reviewRV_layout"
+                android:background="@color/colorLightBeige">
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
+
 
     </ScrollView>
 
@@ -395,7 +410,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Read eBook"
+            android:text="@string/read_ebook"
             android:background="@color/colorIceBlue"
             android:textAllCaps="false"
             android:textAlignment="center"
