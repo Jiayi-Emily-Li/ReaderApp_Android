@@ -5,28 +5,28 @@ plugins {
 
 android {
 
-//
-//    signingConfigs {
-//        debug {
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//
-//        }
-//        JL {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//        release {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//    }
+
+    signingConfigs {
+        debug {
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+
+        }
+        JL {
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+        }
+        release {
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+        }
+    }
 
     /*
 
@@ -74,11 +74,15 @@ android {
     }
 
     buildTypes {
-      /*  release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        release {
             signingConfig signingConfigs.release
-        }*/
+        }
+
+        /*  release {
+              minifyEnabled false
+              proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+              signingConfig signingConfigs.release
+          }*/
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
