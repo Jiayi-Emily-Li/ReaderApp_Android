@@ -93,6 +93,10 @@ android {
         viewBinding true
     }
 
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
 }
 
 
