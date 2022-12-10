@@ -343,12 +343,14 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         curReaderCurBookRef.child("rating").setValue(String.valueOf(ratingBar.getRating()));
         curReaderCurBookRef.child("category").setValue(categoriesTV.getText().toString());
         curReaderCurBookRef.child("reviews").setValue(reviewList);
+        Toast.makeText(this, titleTV.getText().toString() + "has added to your list", Toast.LENGTH_SHORT).show();
     }
 
     private void removeBookmark() {
         activeBookmarkBtn.setVisibility(View.GONE);
         inactiveBookmarkBtn.setVisibility(View.VISIBLE);
         curReaderCurBookRef.removeValue();
+        Toast.makeText(this, titleTV.getText().toString() + "has removed from your list", Toast.LENGTH_SHORT).show();
     }
 
 

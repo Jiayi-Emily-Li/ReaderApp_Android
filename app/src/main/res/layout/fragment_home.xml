@@ -75,12 +75,12 @@
 <!--        app:layout_constraintVertical_bias="0.802" />-->
 
     <ImageButton
-        android:id="@+id/resetButton"
+        android:id="@+id/currentReaderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="240dp"
         android:minHeight="48dp"
-        android:src="@drawable/ic_baseline_person_24"
+        android:src="@drawable/ic_baseline_chrome_reader_mode_24"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.964"

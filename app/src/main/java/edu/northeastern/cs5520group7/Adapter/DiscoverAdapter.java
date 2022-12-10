@@ -3,7 +3,6 @@ package edu.northeastern.cs5520group7.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
         };
 
         //set image -try to retrieve image through Image link
-        Log.d("imagelink", book.getVolumeInfo().getImageLinks().getSmallThumbnail());
         try {
             Glide.with(context).load(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).centerCrop().into(holder.iv_vert);
         } catch (Exception exception) {
@@ -82,7 +80,6 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ViewHo
                     authorNames = book.getVolumeInfo().getAuthors().get(i) + " ";
                     holder.authorTV_vert.setText("By " + authorNames.toString());
                 }
-            Log.d("viewHolder", holder.authorTV_vert.toString());
         } catch (Exception e) {
                 holder.authorTV_vert.setText("-");
             }

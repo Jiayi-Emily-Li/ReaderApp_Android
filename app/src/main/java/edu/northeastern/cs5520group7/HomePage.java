@@ -24,6 +24,7 @@ public class HomePage extends AppCompatActivity {
     public static FirebaseUser currentUser;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,9 @@ public class HomePage extends AppCompatActivity {
                     break;
                 case R.id.post:
                     replaceFragment(new PostFragment());
+                    break;
+                case R.id.me:
+                    replaceFragment(new MeFragment());
                     break;
 
             }

@@ -5,8 +5,8 @@ plugins {
 
 android {
 
-/*
-    signingConfigs {
+
+    /*signingConfigs {
         debug {
             storeFile file('/Users/jiayili/Documents/JLKeystore')
             storePassword '980223'
@@ -28,6 +28,7 @@ android {
         }
     }
 
+
     signingConfigs {
         debug {
             storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
@@ -41,14 +42,12 @@ android {
             keyAlias 'key0'
             keyPassword '13790706'
         }
-
         release {
             storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
             storePassword '13790706'
             keyAlias 'key0'
             keyPassword '13790706'
         }
-
         config {
             storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
             storePassword '13790706'
@@ -58,13 +57,12 @@ android {
     }*/
 
 
-
-    compileSdk 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "edu.northeastern.cs5520group7"
         minSdk 27
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -76,7 +74,7 @@ android {
             signingConfig signingConfigs.release
         }
 
-        release {
+         release {
               minifyEnabled false
               proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
               signingConfig signingConfigs.release
@@ -121,4 +119,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.squareup.picasso:picasso:2.8'
+    implementation 'com.firebase:firebase-client-android:2.3.1'
 }

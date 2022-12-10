@@ -39,6 +39,19 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
+                    <TextView
+                        android:id="@+id/discoverHeaderTitle"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="You May like"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:alpha="0.9"
+                        android:textSize="20sp" />
+
                     <include
                         layout="@layout/category_spinner"/>
 
@@ -50,7 +63,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textview9"
+                            android:id="@+id/Roll_1_title"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -96,7 +109,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textview4"
+                            android:id="@+id/Roll_2_title"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -142,7 +155,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textview8"
+                            android:id="@+id/Roll_3_title"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -188,13 +201,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/Roll_4_titile"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
+                            android:alpha="0.9"
                             android:text="CHILDREN'S"
-                            android:textStyle="bold"
-                            android:alpha="0.9"/>
+                            android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/RV_4"
