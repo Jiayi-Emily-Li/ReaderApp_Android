@@ -1,17 +1,35 @@
 package edu.northeastern.cs5520group7;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.firebase.database.DatabaseReference;
 
 import edu.northeastern.cs5520group7.model.HTTPController;
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import edu.northeastern.cs5520group7.Adapter.ReviewAdapter;
+import edu.northeastern.cs5520group7.model.HTTPController;
+import edu.northeastern.cs5520group7.model.Review;
+import edu.northeastern.cs5520group7.model.Book;
+import edu.northeastern.cs5520group7.model.api.Item;
+import edu.northeastern.cs5520group7.model.api.VolumeInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +40,11 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     RecyclerView RV_1;
     ShimmerFrameLayout shimmer_1;
     SwipeRefreshLayout swipeRefreshLayout;
+    FirebaseUser FBUser;
+    DatabaseReference bookAddedRef;
+    String curUid;
+    String bookId;
+    List<Book> bookList;
 
     public ListFragment() {
         // Required empty public constructor
@@ -45,7 +68,11 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipeRefreshLayout = view.findViewById(R.id.listPg);
 
         httpController = Retrofit_Book.getAPI();
-        getBookList();
+        FBUser = FirebaseAuth.getInstance().getCurrentUser();
+        curUid = FBUser.getUid();
+        bookId = getIntent().getStringExtra("bookId");
+        bookAddedRef = FirebaseDatabase.getInstance().getReference("readers/"+curUid+"/book_added/"+bookId);
+        getBookList(String bookId);
         return view;
     }
 
@@ -59,7 +86,22 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         shimmer_1.setVisibility(View.VISIBLE);
     }
 
-    public void getBookList(){
+    public void getBookList(String bookId){
+        bookAddedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot bookSnapshot: snapshot.getChildren()){
+                    Log.d("bookSnapshot", bookSnapshot.toString());
+                    Book book = bookSnapshot.getValue(Book.class);
+                    bookList.add(book);
+                }
+                Log.d("bookList", bookList.toString());
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
     }
 }
