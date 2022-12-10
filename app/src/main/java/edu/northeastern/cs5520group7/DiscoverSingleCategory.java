@@ -15,8 +15,8 @@ import java.util.List;
 
 import edu.northeastern.cs5520group7.Adapter.SingleCategoryAdapter;
 import edu.northeastern.cs5520group7.model.HTTPController;
-import edu.northeastern.cs5520group7.model.api.Book;
-import edu.northeastern.cs5520group7.model.api.MultiBooks;
+import edu.northeastern.cs5520group7.model.api.Item;
+import edu.northeastern.cs5520group7.model.api.Items;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,8 +31,8 @@ public class DiscoverSingleCategory extends AppCompatActivity implements View.On
     ProgressBar progressBar;
 
     HTTPController httpController;
-    Call<MultiBooks> sCatBooksCall;
-    List<Book> books;
+    Call<Items> sCatBooksCall;
+    List<Item> books;
 
 
     @Override
@@ -80,9 +80,9 @@ public class DiscoverSingleCategory extends AppCompatActivity implements View.On
     private void callSingleCategoryBooks(String sortBy, int maxResults) {
         sCatBooksCall = httpController.getCategoryResults("categories:" +category, "ebooks", sortBy, maxResults);
         Log.d("category", category);
-        sCatBooksCall.enqueue(new Callback<MultiBooks>() {
+        sCatBooksCall.enqueue(new Callback<Items>() {
             @Override
-            public void onResponse(Call<MultiBooks> call, Response<MultiBooks> response) {
+            public void onResponse(Call<Items> call, Response<Items> response) {
                 sCatRV.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 if(response.isSuccessful()){
@@ -97,7 +97,7 @@ public class DiscoverSingleCategory extends AppCompatActivity implements View.On
             }
 
             @Override
-            public void onFailure(Call<MultiBooks> call, Throwable t) {
+            public void onFailure(Call<Items> call, Throwable t) {
                 Toast.makeText(DiscoverSingleCategory.this, "Loading failed", Toast.LENGTH_SHORT).show();
             }
         });

@@ -6,29 +6,29 @@ plugins {
 android {
 
 
-//    signingConfigs {
-//        debug {
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//
-//        }
-//        JL {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//        release {
-//            storePassword '980223'
-//            keyAlias 'my first key'
-//            keyPassword '980223'
-//            storeFile file('/Users/jiayili/Documents/JLKeystore')
-//        }
-//    }
+    signingConfigs {
+        debug {
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
 
+        }
+        JL {
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+        }
+        release {
+            storePassword '980223'
+            keyAlias 'my first key'
+            keyPassword '980223'
+            storeFile file('/Users/jiayili/Documents/JLKeystore')
+        }
+    }
 
+    /*
 
     signingConfigs {
         debug {
@@ -57,7 +57,7 @@ android {
             keyAlias 'key0'
             keyPassword '13790706'
         }
-    }
+    }*/
 
 
 
@@ -119,5 +119,4 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.squareup.picasso:picasso:2.8'
-    implementation 'com.firebase:firebase-client-android:2.3.1'
 }

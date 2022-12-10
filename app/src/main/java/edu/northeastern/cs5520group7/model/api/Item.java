@@ -3,7 +3,7 @@ package edu.northeastern.cs5520group7.model.api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Book {
+public class Item {
 
     //SerializedName is the field name of the google books json file
 

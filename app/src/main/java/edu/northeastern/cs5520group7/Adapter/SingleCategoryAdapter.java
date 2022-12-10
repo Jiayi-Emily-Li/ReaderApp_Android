@@ -21,15 +21,15 @@ import java.util.List;
 
 import edu.northeastern.cs5520group7.BookInfoPage;
 import edu.northeastern.cs5520group7.R;
-import edu.northeastern.cs5520group7.model.api.Book;
+import edu.northeastern.cs5520group7.model.api.Item;
 
 public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAdapter.ViewHolder> {
 
     private Context context;
-    private List<Book> books;
+    private List<Item> books;
 
 
-    public SingleCategoryAdapter(Context context, List<Book> books) {
+    public SingleCategoryAdapter(Context context, List<Item> books) {
         this.context = context;
         this.books = books;
     }
@@ -57,7 +57,7 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView")int position) {
-        Book book = books.get(position);
+        Item book = books.get(position);
 
         //set book title
         try{

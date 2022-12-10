@@ -74,10 +74,11 @@
                         android:layout_width="190dp"
                         android:layout_height="300dp"
                         android:layout_marginTop="10dp"
+                        android:contentDescription="@string/bookimage"
                         android:scaleType="centerCrop"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/printTypeTV2"/>
+                        app:layout_constraintTop_toBottomOf="@+id/printTypeTV2" />
 
                     <TextView
                         android:id="@+id/titleTV"
@@ -119,7 +120,7 @@
                             style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"
                             android:numStars="5"
                             android:isIndicator="true"
                             android:stepSize="0.5"/>
@@ -140,16 +141,16 @@
 
                             <ImageView
                                 android:id="@+id/pageCountIcon"
-                                android:contentDescription="pageCount icon"
+                                android:contentDescription="@string/pagecount_icon"
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/book_icon"/>
+                                android:src="@drawable/ic_baseline_menu_book_24"/>
 
                             <TextView
                                 android:id="@+id/pageCountTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginStart="5dp"
                                 android:alpha="0.7"
                                 android:textSize="12sp"
                                 android:visibility="visible" />
@@ -157,15 +158,15 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:layout_marginLeft="10dp"
-                                android:contentDescription="language icon"
+                                android:layout_marginStart="10dp"
+                                android:contentDescription="@string/language_icon"
                                 android:src="@drawable/language_icon"/>
 
                             <TextView
                                 android:id="@+id/languageTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
+                                android:layout_marginStart="5dp"
                                 android:alpha="0.7"
                                 android:textSize="12sp"
                                 android:visibility="visible" />
@@ -175,6 +176,7 @@
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <Button
                     android:id="@+id/activeBookmark"
@@ -189,7 +191,8 @@
                     android:textAllCaps="false"
                     android:background="@color/colorIceBlue"
                     android:textSize="14sp"
-                    android:text="Remove From Bookmarks"
+                    android:drawableStart="@drawable/ic_baseline_bookmark_remove_24"
+                    android:text="@string/remove_from_bookmarks"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout" />
@@ -204,7 +207,9 @@
                     android:minWidth="0dp"
                     android:visibility="visible"
                     android:minHeight="0dp"
-                    android:text="Add To Bookmarks"
+                    android:drawableStart="@drawable/ic_baseline_bookmark_add_24"
+                    android:paddingStart="5dp"
+                    android:text="@string/add_to_bookmarks"
                     android:textAllCaps="false"
                     android:background="@color/colorIceBlue"
                     android:textSize="14sp"
@@ -217,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp"
-                    android:text="Overview"
+                    android:text="@string/overview"
                     android:textSize="18sp"
                     android:alpha="0.9"
                     android:textStyle="bold"
@@ -240,7 +245,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="More Details"
+                    android:text="@string/more_details"
                     android:textSize="12sp"
                     android:alpha="0.9"
                     android:textStyle="bold"
@@ -253,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="Publisher"
+                    android:text="@string/publisher"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/moreDetail" />
@@ -262,7 +267,7 @@
                     android:id="@+id/publisherTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:textSize="14sp"
                     android:alpha="0.9"
@@ -276,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="Published Date"
+                    android:text="@string/published_date"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/publisherTV" />
 
@@ -284,7 +289,7 @@
                     android:id="@+id/publishedDateTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -297,7 +302,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="ISBN"
+                    android:text="@string/isbn"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/publishedDateTV" />
 
@@ -305,7 +310,7 @@
                     android:id="@+id/isbnTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:textSize="14sp"
                     android:alpha="0.9"
@@ -319,7 +324,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="Category"
+                    android:text="@string/categoryBookInfo"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/isbnTV" />
 
@@ -327,7 +332,7 @@
                     android:id="@+id/categoriesTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -340,7 +345,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
-                    android:text="Maturity Rating"
+                    android:text="@string/maturity_rating"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/categoriesTV" />
 
@@ -348,7 +353,7 @@
                     android:id="@+id/maturityRatingTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:gravity="end"
                     android:alpha="0.9"
                     android:textSize="14sp"
@@ -356,6 +361,43 @@
                     app:layout_constraintStart_toEndOf="@+id/maturityText"
                     app:layout_constraintTop_toTopOf="@+id/maturityText" />
 
+
+                <View
+                    android:id="@+id/view_hr"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@+id/maturityText"
+
+                    />
+
+                <TextView
+                    android:id="@+id/reviewTitleTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:alpha="0.7"
+                    android:text="@string/reviewsBook"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@+id/view_hr"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toBottomOf="@id/reviewTitleTV"
+                    android:id="@+id/reviewRV_layout"
+                    android:background="@color/colorLightBeige">
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
@@ -374,7 +416,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
+
+
         </LinearLayout>
+
 
     </ScrollView>
 
@@ -395,7 +441,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Read eBook"
+            android:text="@string/read_ebook"
             android:background="@color/colorIceBlue"
             android:textAllCaps="false"
             android:textAlignment="center"

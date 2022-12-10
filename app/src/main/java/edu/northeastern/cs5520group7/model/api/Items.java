@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MultiBooks {
+public class Items {
     @SerializedName("kind")
     @Expose
     private String category;
@@ -16,7 +16,7 @@ public class MultiBooks {
 
     @SerializedName("items")
     @Expose
-    private List<Book> books = null;
+    private List<Item> books = null;
 
     public String getCategory() {
         return category;
@@ -26,11 +26,11 @@ public class MultiBooks {
         return totalBooks;
     }
 
-    public List<Book> getBooks() {
+    public List<Item> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(List<Item> books) {
         this.books = books;
     }
 }
