@@ -45,23 +45,5 @@
     <string name="newest">Newest</string>
     <string name="relevance">Relevance</string>
     <string name="sort_image">Sort Image</string>
-    <string name="review">review</string>
-    <string name="username">userName</string>
-    <string name="add_to_bookmarks">Add To Bookmarks</string>
-    <string name="read_ebook">Read eBook</string>
-    <string name="maturity_rating">Maturity Rating</string>
-    <string name="commenterimg">commenterImg</string>
-    <string name="reviews">Reviews</string>
-    <string name="reviewsBook">Reviews</string>
-    <string name="categoryBookInfo">Category</string>
-    <string name="isbn">ISBN</string>
-    <string name="published_date">Published Date</string>
-    <string name="publisher">Publisher</string>
-    <string name="more_details">More Details</string>
-    <string name="overview">Overview</string>
-    <string name="pagecount_icon">pageCount icon</string>
-    <string name="bookimage">bookImage</string>
-    <string name="remove_from_bookmarks">Remove From Bookmarks</string>
-    <string name="language_icon">language icon</string>
 
 </resources>

@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Entry extends AppCompatActivity {
     private Button registerButton;
     private Button signInButton;
+    private Button forgotPasswordBtn;
     private EditText userNameInput;
     private EditText passwordInput;
     String userNamePattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -55,6 +56,16 @@ public class Entry extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 performSignIn();
+
+            }
+        });
+
+        forgotPasswordBtn = (Button) findViewById(R.id.forgotPasswordBtn);
+        forgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Entry.this, ResetPassword.class);
+                startActivity(intent);
 
             }
         });

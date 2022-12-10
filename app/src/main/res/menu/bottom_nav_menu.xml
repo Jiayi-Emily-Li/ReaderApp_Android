@@ -16,4 +16,8 @@
         android:id="@+id/post"
         android:icon="@drawable/ic_baseline_post_add_24"
         android:title="@string/post" />
+    <item
+        android:id="@+id/me"
+        android:icon="@drawable/ic_baseline_feedback_24"
+        android:title="Feedback" />
 </menu>
