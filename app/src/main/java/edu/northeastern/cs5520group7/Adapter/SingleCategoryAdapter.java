@@ -46,7 +46,6 @@ public class SingleCategoryAdapter extends RecyclerView.Adapter<SingleCategoryAd
             @Override
             public void onClick(View view) {
                 String bookId = books.get(viewHolder.getAdapterPosition()).getId();
-                Log.d("bookId", bookId);
                 Intent intent = new Intent(view.getContext(), BookInfoPage.class);
                 intent.putExtra("bookId", bookId);
                 view.getContext().startActivity(intent);
