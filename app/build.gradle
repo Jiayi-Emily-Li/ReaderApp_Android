@@ -6,7 +6,7 @@ plugins {
 android {
 
 
-    signingConfigs {
+    /*signingConfigs {
         debug {
             storeFile file('/Users/jiayili/Documents/JLKeystore')
             storePassword '980223'
@@ -28,7 +28,6 @@ android {
         }
     }
 
-    /*
 
     signingConfigs {
         debug {
@@ -43,14 +42,12 @@ android {
             keyAlias 'key0'
             keyPassword '13790706'
         }
-
         release {
             storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
             storePassword '13790706'
             keyAlias 'key0'
             keyPassword '13790706'
         }
-
         config {
             storeFile file('/Users/wantingxu/Desktop/keystoredemo2/keykey')
             storePassword '13790706'
@@ -74,11 +71,11 @@ android {
     }
 
     buildTypes {
-        release {
+       /* release {
             signingConfig signingConfigs.release
         }
 
-        /*  release {
+         release {
               minifyEnabled false
               proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
               signingConfig signingConfigs.release
