@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3175" />
+        <entry key="app/src/main/res/drawable/ic_baseline_chrome_reader_mode_24.xml" value="0.5685" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3265" />
         <entry key="app/src/main/res/drawable/ic_baseline_list_24.xml" value="0.3265" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.3265" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.3979020713032156" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3652894614399343" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.5619791666666667" />
+        <entry key="app/src/main/res/layout/fragment_me.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/fragment_post.xml" value="0.5619791666666667" />
         <entry key="app/src/main/res/layout/pop_window.xml" value="0.3375808715820312" />
         <entry key="app/src/main/res/layout/user_item.xml" value="0.32864583333333336" />

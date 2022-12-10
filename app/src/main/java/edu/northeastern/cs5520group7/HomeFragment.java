@@ -1,8 +1,5 @@
 package edu.northeastern.cs5520group7;
 
-import android.app.TabActivity;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -12,11 +9,9 @@ import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -54,7 +49,7 @@ public class HomeFragment extends Fragment {
         user = HomePage.currentUser;
 //        hi_text = view.findViewById(R.id.hi_text);
 //        hi_text.setText("Hi, " + userNameText);
-        resetBtn = (ImageButton) view.findViewById(R.id.resetButton);
+        resetBtn = (ImageButton) view.findViewById(R.id.currentReaderButton);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

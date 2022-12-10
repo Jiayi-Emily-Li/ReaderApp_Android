@@ -19,6 +19,8 @@
     <string name="myList">MyList</string>
     <string name="post">Post</string>
 
+
+
     <string-array name="spinner_choices">
         <item>See More Categories</item>
         <item>Art</item>
@@ -45,5 +47,6 @@
     <string name="newest">Newest</string>
     <string name="relevance">Relevance</string>
     <string name="sort_image">Sort Image</string>
+    <string name="me">Me</string>
 
 </resources>
