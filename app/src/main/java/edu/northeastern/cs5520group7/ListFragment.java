@@ -12,15 +12,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import edu.northeastern.cs5520group7.model.HTTPController;
-import edu.northeastern.cs5520group7.model.api.MultiBooks;
-import retrofit2.Call;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
     HTTPController httpController;
-    Call<MultiBooks> list_Call;
+    //Call<MultiBooks> list_Call;
     RecyclerView RV_1;
     ShimmerFrameLayout shimmer_1;
     SwipeRefreshLayout swipeRefreshLayout;

@@ -27,6 +27,8 @@ public class Entry extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
     ProgressDialog progressDialog;
+    public static String userNameText;
+    public static String passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,7 @@ public class Entry extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         sendUserToNextPage();
+
                         Toast.makeText(Entry.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.dismiss();
@@ -94,6 +97,8 @@ public class Entry extends AppCompatActivity {
 
     private void sendUserToNextPage() {
         Intent intent = new Intent(Entry.this, HomePage.class);
+        intent.putExtra("userName", userNameInput.getText().toString());
+        intent.putExtra("currentUser",mUser);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
