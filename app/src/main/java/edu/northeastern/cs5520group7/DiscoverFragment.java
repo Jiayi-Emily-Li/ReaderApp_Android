@@ -1,5 +1,6 @@
 package edu.northeastern.cs5520group7;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,6 +111,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_choices, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cat_spinner.setAdapter(spinnerAdapter);
+        cat_spinner.setSelection(0);
         cat_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -306,6 +308,7 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
     private void customizedRecommendation(){
         List<String> output = new ArrayList<>();
         bookAddedRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot singleBookDataSnapshot: snapshot.getChildren()){
@@ -324,10 +327,10 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 if(output.size() == 0){
                     //default recommend result for new users or users without book list
                     getRecommendBooks(cat_1, cat_2, cat_3, cat_4);
-                    roll_1tv.setText(cat_1);
-                    roll_2tv.setText(cat_2);
-                    roll_3tv.setText(cat_3);
-                    roll_4tv.setText(cat_4);
+                    roll_1tv.setText("Fiction");
+                    roll_2tv.setText("Romance");
+                    roll_3tv.setText("Thriller");
+                    roll_4tv.setText("Children");
                 }else{
                     sortPrefList(output);
                     Log.d("sortedList", sortedPrefList.toString());
@@ -345,11 +348,21 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                     }
                     Log.d("exist user", readerFavCat.toString());
                     getRecommendBooks(readerFavCat.get(0), readerFavCat.get(1),readerFavCat.get(2), readerFavCat.get(3));
-                    roll_1tv.setText(readerFavCat.get(0));
-                    roll_2tv.setText(readerFavCat.get(1));
-                    roll_3tv.setText(readerFavCat.get(2));
-                    roll_4tv.setText(readerFavCat.get(3));
+                    if(sortedPrefList.size()==1){roll_1tv.setText(sortedPrefList.get(0)); roll_2tv.setText("Romance"); roll_3tv.setText("Thriller");
+                            roll_4tv.setText("Children");}
+                    else if(sortedPrefList.size()==2){roll_1tv.setText(sortedPrefList.get(0)); roll_2tv.setText(sortedPrefList.get(1)); roll_3tv.setText("Thriller");
+                        roll_4tv.setText("Children");}
+                    else if(sortedPrefList.size()==3){roll_1tv.setText(sortedPrefList.get(0)); roll_2tv.setText(sortedPrefList.get(1));
+                        roll_3tv.setText(sortedPrefList.get(2)); roll_4tv.setText("Children");}
+                    else if(sortedPrefList.size()==4) {
+                        roll_1tv.setText(sortedPrefList.get(0));
+                        roll_2tv.setText(sortedPrefList.get(1));
+                        roll_3tv.setText(sortedPrefList.get(2));
+                        roll_4tv.setText(sortedPrefList.get(3));
                     }
+                    else{}
+
+                }
             }
 
             @Override

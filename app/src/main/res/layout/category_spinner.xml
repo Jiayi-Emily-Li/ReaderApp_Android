@@ -5,18 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Roll_1_title"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="You May like"
-        android:fontFamily="sans-serif-light"
-        android:textStyle="bold"
-        android:alpha="0.9"
-        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/cat_spinner"
@@ -25,6 +13,8 @@
         android:layout_marginTop="15dp"
         android:spinnerMode="dropdown"
         android:textAlignment="center"
+        android:fontFamily="sans-serif"
+        android:drawableStart="@drawable/ic_baseline_manage_search_24"
         android:background="@color/colorIceBlue"
         android:layout_gravity="center_horizontal"
         />

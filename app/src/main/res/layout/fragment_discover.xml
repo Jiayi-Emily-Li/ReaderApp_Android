@@ -39,6 +39,19 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
+                    <TextView
+                        android:id="@+id/discoverHeaderTitle"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="You May like"
+                        android:fontFamily="sans-serif"
+                        android:textStyle="bold"
+                        android:alpha="0.9"
+                        android:textSize="20sp" />
+
                     <include
                         layout="@layout/category_spinner"/>
 
