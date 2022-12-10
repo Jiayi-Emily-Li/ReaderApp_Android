@@ -22,7 +22,6 @@ public class HomeFragment extends Fragment {
 
 
     public static String userNameText;
-    private TextView hi_text;
     private FirebaseUser user;
     private ImageButton resetBtn;
 
@@ -47,8 +46,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         userNameText = HomePage.userNameText;
         user = HomePage.currentUser;
-//        hi_text = view.findViewById(R.id.hi_text);
-//        hi_text.setText("Hi, " + userNameText);
         resetBtn = (ImageButton) view.findViewById(R.id.currentReaderButton);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override

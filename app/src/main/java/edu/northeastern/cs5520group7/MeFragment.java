@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -23,6 +24,8 @@ public class MeFragment extends Fragment {
     Context thisContext;
     Button sendFeedbackBtn;
     private FirebaseUser user;
+    private TextView hi_text;
+    public static String userNameText;
 
     public MeFragment() {
         // Required empty public constructor
@@ -47,6 +50,11 @@ public class MeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         feedback = (EditText) view.findViewById(R.id.feedbackText);
         Firebase.setAndroidContext(MeFragment.this.thisContext);
+        userNameText = HomePage.userNameText;
+
+        hi_text = view.findViewById(R.id.hello);
+        hi_text.setText("Hi, " + userNameText + "\nYour feedback is valuable to us!" + "\nPlease leave it below: ");
+
         ref = new Firebase("https://stick-it-to-em-b92ab-default-rtdb.firebaseio.com/");
         sendFeedbackBtn = (Button) view.findViewById(R.id.feedbackButton);
         sendFeedbackBtn.setOnClickListener(new View.OnClickListener() {

@@ -12,29 +12,15 @@
             android:id="@+id/imageView3"
             android:layout_width="136dp"
             android:layout_height="128dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="250dp"
             android:layout_marginBottom="18dp"
             android:contentDescription="TODO"
             android:src="@drawable/book_icon3"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/hello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/resetPasswordButton"
-            android:layout_width="312dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="91dp"
-            android:layout_marginBottom="96dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Reset Password"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/feedbackButton" />
 
         <Button
             android:id="@+id/feedbackButton"
@@ -45,30 +31,31 @@
             android:text=" send feedback"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/feedbackText" />
 
         <EditText
             android:id="@+id/feedbackText"
             android:layout_width="312dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginTop="3dp"
             app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/hello"
             android:hint="Enter here"/>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-thin"
             android:text="Your feedback is valuable!"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/feedbackText"
             app:layout_constraintEnd_toEndOf="parent"
