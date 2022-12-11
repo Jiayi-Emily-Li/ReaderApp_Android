@@ -37,6 +37,9 @@
             android:name=".Register"
             android:exported="false" />
         <activity
+            android:name=".MakePost"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity

@@ -46,7 +46,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
     TextView descriptionTV, publisherTV, publishedDateTV, isbnTV, categoriesTV, maturityTV;
     ImageView bookIV;
     RatingBar ratingBar;
-    Button bookLinkBtn, activeBookmarkBtn, inactiveBookmarkBtn;
+    Button bookLinkBtn, activeBookmarkBtn, inactiveBookmarkBtn, reviewBtn;
     FirebaseUser FBUser;
 
     HTTPController httpController;
@@ -84,6 +84,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         categoriesTV = findViewById(R.id.categoriesTV);
         maturityTV = findViewById(R.id.maturityRatingTV);
         bookLinkBtn = findViewById(R.id.bookLink);
+        reviewBtn = findViewById(R.id.addReview);
 
         //retrieve book information
         httpController = Retrofit_Book.getAPI();
@@ -115,6 +116,14 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
 
         activeBookmarkBtn.setOnClickListener(this);
         inactiveBookmarkBtn.setOnClickListener(this);
+
+        reviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookInfoPage.this, MakePost.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -125,8 +134,9 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onResponse(Call<Item> call, Response<Item> response) {
                 Item book = response.body();
-                VolumeInfo volumeInfo = response.body().getVolumeInfo();
+
                 if (response.isSuccessful()) {
+                    VolumeInfo volumeInfo = response.body().getVolumeInfo();
 
                     //set page title
                     setTitle(volumeInfo.getTitle());
@@ -164,7 +174,6 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
 
                     }
 
-                    }
 
                     //set rating count
                     try {
@@ -253,6 +262,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                     });
+                }
             }
 
             @Override

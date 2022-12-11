@@ -314,8 +314,11 @@ public class DiscoverFragment extends Fragment implements SwipeRefreshLayout.OnR
                 for(DataSnapshot singleBookDataSnapshot: snapshot.getChildren()){
                     String category = singleBookDataSnapshot.child("category").getValue(String.class);
                     String[] parts = new String[30];
-                    parts = category.split("[/&]");
-                    output.add(parts[0]);
+                    if(category != null){
+                        parts = category.split("[/&]");
+                        output.add(parts[0]);
+                    }else{
+                    }
                 }
                 Log.d("initial",output.toString());
                 cat_1 = "young+fiction";

@@ -21,20 +21,20 @@
     <string name="bookimage">bookimage</string>
     <string name="pagecount_icon">pagecount icon</string>
     <string name="language_icon">language icon</string>
-    <string name="remove_from_bookmarks">remove from bookmarks</string>
-    <string name="add_to_bookmarks">add to bookmarks</string>
-    <string name="overview">overview</string>
-    <string name="more_details">more details</string>
-    <string name="published_date">published date</string>
-    <string name="publisher">publisher</string>
-    <string name="isbn">isbn</string>
-    <string name="categoryBookInfo">categoryBookInfo</string>
-    <string name="maturity_rating">maturity rating</string>
-    <string name="reviewsBook">reviewsBook</string>
-    <string name="read_ebook">read ebook</string>
+    <string name="remove_from_bookmarks">Remove from bookList</string>
+    <string name="add_to_bookmarks">Add to bookList</string>
+    <string name="overview">Overview</string>
+    <string name="more_details">More Details</string>
+    <string name="published_date">Published Date</string>
+    <string name="publisher">Publisher</string>
+    <string name="isbn">ISBN</string>
+    <string name="categoryBookInfo">Categories</string>
+    <string name="maturity_rating">Maturity Rating</string>
+    <string name="reviewsBook">Reviews</string>
+    <string name="read_ebook">Read eBook</string>
     <string name="commenterimg">commenterimg</string>
-    <string name="username">username</string>
-    <string name="review">review</string>
+    <string name="username">Username</string>
+    <string name="review">Review</string>
 
 
 
@@ -66,6 +66,6 @@
     <string name="newest">Newest</string>
     <string name="relevance">Relevance</string>
     <string name="sort_image">Sort Image</string>
-    <string name="post_rating_and_review" />
+    <string name="post_review_infoPage">Post Review</string>
 
 </resources>
