@@ -21,8 +21,8 @@
     <string name="bookimage">bookimage</string>
     <string name="pagecount_icon">pagecount icon</string>
     <string name="language_icon">language icon</string>
-    <string name="remove_from_bookmarks">remove from bookmarks</string>
-    <string name="add_to_bookmarks">add to bookmarks</string>
+    <string name="remove_from_bookmarks">remove from bookList</string>
+    <string name="add_to_bookmarks">add to bookList</string>
     <string name="overview">overview</string>
     <string name="more_details">more details</string>
     <string name="published_date">published date</string>
