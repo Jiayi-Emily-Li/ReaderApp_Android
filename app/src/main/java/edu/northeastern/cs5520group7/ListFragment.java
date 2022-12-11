@@ -47,7 +47,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     DatabaseReference bookAddedRef;
     String curUid;
     String bookId;
-    List<Book> bookList = new ArrayList<>();
+    List<Item> bookList = new ArrayList<>();
     ListAdapter listAdapter;
     DiscoverAdapter discoverAdapter;
     TextView Err_1;
@@ -110,11 +110,11 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                             RV_1.setVisibility(View.VISIBLE);
                             shimmer_1.setVisibility(View.GONE);
                             if(response.isSuccessful()) {
-
-                                listAdapter = new ListAdapter(getContext(), response.body().getVolumeInfo());
-                                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                                RV_1.setLayoutManager(lm);
-                                RV_1.setAdapter(listAdapter);
+                                bookList.add(response.body());
+//                                listAdapter = new ListAdapter(getContext(), response.body().getVolumeInfo());
+//                                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//                                RV_1.setLayoutManager(lm);
+//                                RV_1.setAdapter(listAdapter);
 
 
                             }
@@ -133,10 +133,10 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 }
                 //Log.d("bookList", bookList.toString());
 
-//                listAdapter = new ListAdapter(getContext(), bookList);
-//                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-//                recyclerView.setLayoutManager(lm);
-//                recyclerView.setAdapter(listAdapter);
+                listAdapter = new ListAdapter(getContext(), bookList);
+                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                RV_1.setLayoutManager(lm);
+                RV_1.setAdapter(listAdapter);
             }
 
             @Override
