@@ -30,7 +30,7 @@
     <string name="isbn">isbn</string>
     <string name="categoryBookInfo">categoryBookInfo</string>
     <string name="maturity_rating">maturity rating</string>
-    <string name="reviewsBook">reviewsBook</string>
+    <string name="reviewsBook">reviews</string>
     <string name="read_ebook">read ebook</string>
     <string name="commenterimg">commenterimg</string>
     <string name="username">username</string>
