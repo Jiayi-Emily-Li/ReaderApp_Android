@@ -66,5 +66,6 @@
     <string name="newest">Newest</string>
     <string name="relevance">Relevance</string>
     <string name="sort_image">Sort Image</string>
+    <string name="post_rating_and_review" />
 
 </resources>

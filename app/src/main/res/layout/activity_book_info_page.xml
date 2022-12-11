@@ -28,7 +28,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/FullBookInfo_Layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/button">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/BasicBookInfo_Layout"
@@ -59,11 +61,11 @@
                         android:id="@+id/printTypeTV2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:paddingLeft="15dp"
                         android:paddingTop="5dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="5dp"
-                        android:layout_marginTop="10dp"
                         android:textSize="12sp"
                         android:visibility="gone"
                         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
@@ -85,10 +87,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:alpha="0.9"
+                        android:gravity="center"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:gravity="center"
-                        android:alpha="0.9"
                         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
                         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
                         app:layout_constraintTop_toBottomOf="@+id/bookIV" />
@@ -121,30 +123,30 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
-                            android:numStars="5"
                             android:isIndicator="true"
-                            android:stepSize="0.5"/>
+                            android:numStars="5"
+                            android:stepSize="0.5" />
 
 
                         <TextView
                             android:id="@+id/ratingsTV"
                             android:layout_width="wrap_content"
-                            android:visibility="gone"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:gravity="end|center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:id="@+id/pageCountIcon"
-                                android:contentDescription="@string/pagecount_icon"
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:src="@drawable/ic_baseline_menu_book_24"/>
+                                android:contentDescription="@string/pagecount_icon"
+                                android:src="@drawable/ic_baseline_menu_book_24" />
 
                             <TextView
                                 android:id="@+id/pageCountTV"
@@ -160,7 +162,7 @@
                                 android:layout_height="14dp"
                                 android:layout_marginStart="10dp"
                                 android:contentDescription="@string/language_icon"
-                                android:src="@drawable/language_icon"/>
+                                android:src="@drawable/language_icon" />
 
                             <TextView
                                 android:id="@+id/languageTV"
@@ -182,17 +184,17 @@
                     android:id="@+id/activeBookmark"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorIceBlue"
                     android:clickable="true"
+                    android:drawableStart="@drawable/ic_baseline_bookmark_remove_24"
                     android:focusable="true"
                     android:gravity="center"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:visibility="gone"
-                    android:textAllCaps="false"
-                    android:background="@color/colorIceBlue"
-                    android:textSize="14sp"
-                    android:drawableStart="@drawable/ic_baseline_bookmark_remove_24"
                     android:text="@string/remove_from_bookmarks"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout" />
@@ -201,33 +203,34 @@
                     android:id="@+id/inactiveBookmark"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:background="@color/colorIceBlue"
                     android:clickable="true"
+                    android:drawableStart="@drawable/ic_baseline_bookmark_add_24"
                     android:focusable="true"
                     android:gravity="center"
                     android:minWidth="0dp"
-                    android:visibility="visible"
                     android:minHeight="0dp"
-                    android:drawableStart="@drawable/ic_baseline_bookmark_add_24"
                     android:paddingStart="5dp"
                     android:text="@string/add_to_bookmarks"
                     android:textAllCaps="false"
-                    android:background="@color/colorIceBlue"
                     android:textSize="14sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout" />
+
 
                 <TextView
                     android:id="@+id/overviewTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="80dp"
+                    android:alpha="0.9"
                     android:text="@string/overview"
                     android:textSize="18sp"
-                    android:alpha="0.9"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout"/>
+                    app:layout_constraintTop_toBottomOf="@+id/BasicBookInfo_Layout" />
 
                 <TextView
                     android:id="@+id/descriptionTV"
@@ -245,9 +248,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:alpha="0.9"
                     android:text="@string/more_details"
                     android:textSize="12sp"
-                    android:alpha="0.9"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
@@ -268,9 +271,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
+                    android:alpha="0.9"
                     android:gravity="end"
                     android:textSize="14sp"
-                    android:alpha="0.9"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toEndOf="@+id/publisherText"
                     app:layout_constraintTop_toTopOf="@+id/publisherText" />
@@ -311,9 +314,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
+                    android:alpha="0.9"
                     android:gravity="end"
                     android:textSize="14sp"
-                    android:alpha="0.9"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toEndOf="@+id/isbnText"
                     app:layout_constraintTop_toTopOf="@+id/isbnText" />
@@ -354,8 +357,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:gravity="end"
                     android:alpha="0.9"
+                    android:gravity="end"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toEndOf="@+id/maturityText"
@@ -367,8 +370,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
                     android:background="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/maturityText"
@@ -382,22 +385,21 @@
                     android:layout_marginTop="10dp"
                     android:alpha="0.7"
                     android:text="@string/reviewsBook"
-                    android:textStyle="bold"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/view_hr"/>
+                    app:layout_constraintTop_toBottomOf="@+id/view_hr" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewRV_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:background="@color/colorLightBeige"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@id/reviewTitleTV"
-                    android:id="@+id/reviewRV_layout"
-                    android:background="@color/colorLightBeige">
-                </androidx.recyclerview.widget.RecyclerView>
+                    app:layout_constraintTop_toBottomOf="@id/reviewTitleTV"></androidx.recyclerview.widget.RecyclerView>
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"

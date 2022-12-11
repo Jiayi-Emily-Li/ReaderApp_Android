@@ -60,7 +60,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         //Book book = books.get(position);
-        Item book = books.get(position);
+        int adapterPos = holder.getAdapterPosition();
+        if (adapterPos<0){
+            adapterPos*=-1;
+        }
+        Item book = books.get((adapterPos));
 
         //set title
         try{
