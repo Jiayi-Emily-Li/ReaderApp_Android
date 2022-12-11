@@ -2,7 +2,6 @@ package edu.northeastern.cs5520group7.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.bumptech.glide.Glide;
 
-import edu.northeastern.cs5520group7.BookInfoPage;
 import edu.northeastern.cs5520group7.R;
-import edu.northeastern.cs5520group7.model.Book;
+import edu.northeastern.cs5520group7.model.api.VolumeInfo;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
 
     private Context context;
-    private List<Book> books;
+    private VolumeInfo bookInfo;
 
-    public ListAdapter(Context context, List<Book> books){
+    public ListAdapter(Context context, VolumeInfo bookInfo){
         this.context = context;
-        this.books = books;
+        this.bookInfo = bookInfo;
     }
 
 
@@ -42,10 +40,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             public void onClick(View view) {
 
                 //while single book get selected, sent bookId to single book info page
-                String bookId = books.get(viewHolder.getAdapterPosition()).getBookId();
-                Intent intent = new Intent(view.getContext(), BookInfoPage.class);
-                intent.putExtra("bookId", bookId);
-                view.getContext().startActivity(intent);
+//                String bookId = books.get(viewHolder.getAdapterPosition()).getBookId();
+//                Log.d("bookId", bookId.toString());
+//                Intent intent = new Intent(view.getContext(), BookInfoPage.class);
+//                intent.putExtra("bookId", bookId);
+//                view.getContext().startActivity(intent);
             }
         });
         return viewHolder;
@@ -53,18 +52,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Book book = books.get(position);
+        //Book book = books.get(position);
 
         //set title
         try{
-            holder.titleTV_vert.setText(book.getBookname());
+            holder.titleTV_vert.setText(bookInfo.getTitle());
         } catch (Exception e) {
             holder.titleTV_vert.setText("-");
-        };
+        }
 
         //set image -try to retrieve image through Image link
         try {
-            //Glide.with(context).load(book.getVolumeInfo().getImageLinks().getSmallThumbnail()).centerCrop().into(holder.iv_vert);
+            Glide.with(context).load(bookInfo.getImageLinks().getSmallThumbnail()).centerCrop().into(holder.iv_vert);
         } catch (Exception exception) {
             //if retrieve failed, use default book image instead
             holder.iv_vert.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.default_book_img));
@@ -72,7 +71,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         //set author name - may have different amount of authors
         try{
-            holder.authorTV_vert.setText(book.getAuthor());
+            Integer authorNum = bookInfo.getAuthors().size();
+            String authorNames= "";
+            for (int i = 0; i < authorNum; i++){
+                authorNames = bookInfo.getAuthors().get(i) + " ";
+                holder.authorTV_vert.setText("By " + authorNames.toString());
+            }
 
         } catch (Exception e) {
             holder.authorTV_vert.setText("-");
@@ -81,7 +85,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return books.size();
+        return bookInfo.getAuthors().size();
     }
 
 

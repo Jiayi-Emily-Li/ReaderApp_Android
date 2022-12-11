@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,11 +22,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import edu.northeastern.cs5520group7.Adapter.DiscoverAdapter;
 import edu.northeastern.cs5520group7.Adapter.ListAdapter;
 import edu.northeastern.cs5520group7.model.Book;
 import edu.northeastern.cs5520group7.model.HTTPController;
+import edu.northeastern.cs5520group7.model.api.Item;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,10 +47,13 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     DatabaseReference bookAddedRef;
     String curUid;
     String bookId;
-    List<Book> bookList;
+    List<Book> bookList = new ArrayList<>();
     ListAdapter listAdapter;
-    RecyclerView recyclerView;
+    DiscoverAdapter discoverAdapter;
+    TextView Err_1;
+    //RecyclerView recyclerView;
     LinearLayoutManager lm;
+    Call<Item> book_call;
 
     public ListFragment() {
         // Required empty public constructor
@@ -62,7 +72,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        RV_1 = view.findViewById(R.id.RV_1);
+        RV_1 = (RecyclerView) view.findViewById(R.id.RV_1);
         shimmer_1 = view.findViewById(R.id.shimmer_1);
         swipeRefreshLayout = view.findViewById(R.id.listPg);
 
@@ -92,13 +102,41 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 for(DataSnapshot bookSnapshot: snapshot.getChildren()){
                     Log.d("bookSnapshot", bookSnapshot.toString());
                     Book book = bookSnapshot.getValue(Book.class);
-                    bookList.add(book);
+                    //bookList.add(book);
+                    book_call = httpController.getBookItem(book.getBookId());
+                    book_call.enqueue(new Callback<Item>() {
+                        @Override
+                        public void onResponse(Call<Item> call, Response<Item> response) {
+                            RV_1.setVisibility(View.VISIBLE);
+                            shimmer_1.setVisibility(View.GONE);
+                            if(response.isSuccessful()) {
+
+                                listAdapter = new ListAdapter(getContext(), response.body().getVolumeInfo());
+                                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                                RV_1.setLayoutManager(lm);
+                                RV_1.setAdapter(listAdapter);
+
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Item> call, Throwable t) {
+                            RV_1.setVisibility(View.GONE);
+                            shimmer_1.setVisibility(View.GONE);
+                            Err_1.setVisibility(View.VISIBLE);
+                            Err_1.setText(t.getMessage());
+
+
+                        }
+                    });
                 }
-                Log.d("bookList", bookList.toString());
-                listAdapter = new ListAdapter(getContext(), bookList);
-                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                recyclerView.setLayoutManager(lm);
-                recyclerView.setAdapter(listAdapter);
+                //Log.d("bookList", bookList.toString());
+
+//                listAdapter = new ListAdapter(getContext(), bookList);
+//                lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//                recyclerView.setLayoutManager(lm);
+//                recyclerView.setAdapter(listAdapter);
             }
 
             @Override

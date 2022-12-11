@@ -7,6 +7,10 @@ public class Book {
     String category;
     String rating;
 
+    public Book(){
+
+    }
+
     public Book(String bookId, String bookname, String author, String category, String rating) {
         this.bookId = bookId;
         this.bookname = bookname;
@@ -53,7 +57,7 @@ public class Book {
      */
     @Override
     public String toString() {
-        return bookname + " by " + author;
+        return bookId;
     }
 
     /**
