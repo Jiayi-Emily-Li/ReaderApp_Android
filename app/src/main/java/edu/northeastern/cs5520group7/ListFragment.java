@@ -8,15 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.firebase.database.DatabaseReference;
-
-import edu.northeastern.cs5520group7.model.HTTPController;
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,16 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import edu.northeastern.cs5520group7.Adapter.ReviewAdapter;
-import edu.northeastern.cs5520group7.Adapter.DiscoverAdapter;
-import edu.northeastern.cs5520group7.model.HTTPController;
-import edu.northeastern.cs5520group7.model.Review;
-import edu.northeastern.cs5520group7.model.Book;
-import edu.northeastern.cs5520group7.model.api.Item;
-import edu.northeastern.cs5520group7.model.api.VolumeInfo;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import edu.northeastern.cs5520group7.Adapter.ListAdapter;
+import edu.northeastern.cs5520group7.model.Book;
+import edu.northeastern.cs5520group7.model.HTTPController;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,8 +40,8 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     DatabaseReference bookAddedRef;
     String curUid;
     String bookId;
-    List<Item> bookList;
-    DiscoverAdapter discoverAdapter;
+    List<Book> bookList;
+    ListAdapter listAdapter;
     RecyclerView recyclerView;
     LinearLayoutManager lm;
 
@@ -79,7 +70,7 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         FBUser = FirebaseAuth.getInstance().getCurrentUser();
         curUid = FBUser.getUid();
         //bookId = FirebaseDatabase.getInstance().getReference("readers/"+curUid+"/book_added/");
-        bookAddedRef = FirebaseDatabase.getInstance().getReference("readers/"+curUid+"/book_added/"+bookId);
+        bookAddedRef = FirebaseDatabase.getInstance().getReference().child("readers").child(curUid).child("book_added");
         getBookList();
         return view;
     }
@@ -95,19 +86,19 @@ public class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     public void getBookList(){
-        bookAddedRef.addValueEventListener(new ValueEventListener() {
+        bookAddedRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot bookSnapshot: snapshot.getChildren()){
                     Log.d("bookSnapshot", bookSnapshot.toString());
-                    Item book = bookSnapshot.getValue(Item.class);
+                    Book book = bookSnapshot.getValue(Book.class);
                     bookList.add(book);
                 }
                 Log.d("bookList", bookList.toString());
-                discoverAdapter = new DiscoverAdapter(getContext(), bookList);
+                listAdapter = new ListAdapter(getContext(), bookList);
                 lm = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(lm);
-                recyclerView.setAdapter(discoverAdapter);
+                recyclerView.setAdapter(listAdapter);
             }
 
             @Override

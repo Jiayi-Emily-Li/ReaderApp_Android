@@ -1,36 +1,27 @@
 package edu.northeastern.cs5520group7.model;
 
 public class Book {
-    int bookID;
-    String title;
+    String bookId;
+    String bookname;
     String author;
-    String genre;
-    int publicationYear;
-    String isbn;
-    double rating;
-    String description;
-    private String imageURL;
-    //private ImageButton linkedImageButton;
+    String category;
+    String rating;
 
-    public Book(int bookID, String title, String author, String genre, int publicationYear,
-                String isbn, double rating, String description, String imageURL) {
-        this.bookID = bookID;
-        this.title = title;
+    public Book(String bookId, String bookname, String author, String category, String rating) {
+        this.bookId = bookId;
+        this.bookname = bookname;
         this.author = author;
-        this.genre = genre;
-        this.publicationYear = publicationYear;
-        this.isbn = isbn;
+        this.category = category;
         this.rating = rating;
-        this.description = description;
-        this.imageURL = imageURL;
+
     }
 
     /**
      * Gets the book's title.
      * @return String representing the book's title.
      */
-    public String getTitle() {
-        return title;
+    public String getBookname() {
+        return bookname;
     }
 
     /**
@@ -45,57 +36,32 @@ public class Book {
      * Gets the book's genre.
      * @return String representing the book's genre.
      */
-    public String getGenre() {return genre;}
+    public String getCategory() {return category;}
 
     /**
      * Gets the book's average rating.
      * @return Double representing the book's average rating.
      */
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    /**
-     * Gets the book's isbn.
-     * @return String representing the book's isbn.
-     */
-    public String getISBN() {
-        return isbn;
-    }
+
     /**
      * Gets the textual representation of a book.
      * @return String representation of the book.
      */
     @Override
     public String toString() {
-        return title + " by " + author;
+        return bookname + " by " + author;
     }
 
     /**
      * Gets the book's ID.
      * @return Integer representation of the book ID.
      */
-    public int getBookID() {
-        return bookID;
-    }
-    /**
-     * Gets the book's publication year.
-     * @return Integer representing the book's publication year.
-     */
-    public int getPublicationYear() {
-        return publicationYear;
-    }
-    /**
-     * Gets the book's description.
-     * @return String representing the book's description.
-     */
-    public String getDescription() {
-        return description;
+    public String getBookId() {
+        return bookId;
     }
 
-    /**
-     * Gets a link to the book's cover image.
-     * @return String representing the book's cover image URL.
-     */
-    public String getImageURL() { return imageURL; }
 }
