@@ -387,6 +387,22 @@
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/view_hr"/>
 
+                <Button
+                    android:id="@+id/addReview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_review_infoPage"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:minHeight="0dp"
+                    android:background="@color/colorIceBlue"
+                    app:layout_constraintLeft_toRightOf="@id/reviewTitleTV"
+                    app:layout_constraintTop_toTopOf="@+id/reviewTitleTV"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
