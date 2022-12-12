@@ -362,6 +362,11 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, titleTV.getText().toString() + "has removed from your list", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 
 
 }
