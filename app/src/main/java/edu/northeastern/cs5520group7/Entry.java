@@ -49,6 +49,7 @@ public class Entry extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+
         progressDialog = new ProgressDialog(this);
 
         signInButton = (Button) findViewById(R.id.signInButton);

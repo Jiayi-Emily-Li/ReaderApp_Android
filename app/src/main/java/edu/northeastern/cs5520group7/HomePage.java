@@ -47,9 +47,9 @@ public class HomePage extends AppCompatActivity {
                 case R.id.myList:
                     replaceFragment(new ListFragment());
                     break;
-                case R.id.post:
-                    replaceFragment(new PostFragment());
-                    break;
+//                case R.id.post:
+//                    replaceFragment(new PostFragment());
+//                    break;
                 case R.id.me:
                     replaceFragment(new MeFragment());
                     break;

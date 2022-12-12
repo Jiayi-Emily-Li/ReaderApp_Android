@@ -12,10 +12,10 @@
         android:id="@+id/myList"
         android:icon="@drawable/ic_baseline_list_24"
         android:title="@string/myList" />
-    <item
-        android:id="@+id/post"
-        android:icon="@drawable/ic_baseline_post_add_24"
-        android:title="@string/post" />
+<!--    <item-->
+<!--        android:id="@+id/post"-->
+<!--        android:icon="@drawable/ic_baseline_post_add_24"-->
+<!--        android:title="@string/post" />-->
     <item
         android:id="@+id/me"
         android:icon="@drawable/ic_baseline_feedback_24"
