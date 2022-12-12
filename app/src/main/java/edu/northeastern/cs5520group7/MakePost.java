@@ -1,5 +1,6 @@
 package edu.northeastern.cs5520group7;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,25 +43,15 @@ public class MakePost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addReview();
+                Intent intent = new Intent(v.getContext(), BookInfoPage.class);
+                intent.putExtra("bookId", bookId);
+                v.getContext().startActivity(intent);
             }
         });
     }
 
     private void addReview(){
-//        commenterRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot commenterSnapshot: snapshot.getChildren()){
-////                    Reader commenter = commenterSnapshot.getValue(Reader.class);
-////                    reviewAddedRef.child("commenter").setValue(commenter.getEmail());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         String commenter = mUser.getEmail();
