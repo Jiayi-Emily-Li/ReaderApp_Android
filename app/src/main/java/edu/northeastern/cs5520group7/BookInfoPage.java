@@ -121,6 +121,7 @@ public class BookInfoPage extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BookInfoPage.this, MakePost.class);
+                intent.putExtra("bookId", bookId);
                 startActivity(intent);
             }
         });
