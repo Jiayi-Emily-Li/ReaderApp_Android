@@ -1,3 +1,6 @@
-# cs5520group7
+# Reader App
 
-Please find the code in master branch.
+## Description
+
+A book recommendation app for discovering new favorites, creating reading lists and sharing reviews. 
+
